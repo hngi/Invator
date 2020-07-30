@@ -1,0 +1,75 @@
+
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+h2{
+  padding-top: 30px;
+  color: black !important;
+}
+
+img{
+  margin-top: 40px;
+  position: relative;
+  box-shadow: 2px 2px 2px 2px grey;
+}
+.card-img-top{
+  box-shadow: none;
+}
+
+.navbar-brand{
+  color: black;
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+.navbar-brand:hover{
+  color: navy;
+}
+.nav-link{
+  color: black;
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+.nav-link:hover{
+  color: navy;
+}
+.navbar-toggler{
+  color: black;
+  margin-top: 30px;
+  margin-bottom: -30px;
+}
+.navbar-toggle:hover{
+  color: navy;
+}
+hr{
+   position: relative; 
+   border: none; 
+   height: 1px; 
+   background: #0074d9 !important;
+   margin-bottom: 25px; 
+}
+button{
+  background-color: #0074d9;
+  padding: 10px;
+}
+button:hover{
+  background-color: navy;
+}
+h4{
+  text-align: justify;
+  margin-bottom: 100px;
+}
+a:hover{
+  text-decoration: none;
+}
+
+.space{
+  margin-top: 35px;
+}
+.fab{
+  color: white;
+}
+
+
+
+
+
