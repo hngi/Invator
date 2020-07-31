@@ -8,23 +8,31 @@ class EmailsForm(forms.ModelForm):
 	name = forms.CharField(label="Your Name:", max_length=254,
 					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter your name...',
+						'placeholder': 'Enter your name',
 						'class': 'form-control',
 					})
 				)
 	message = forms.CharField(label="Your Message:", max_length=2000,
 					widget=forms.Textarea(
 					attrs={
-						'placeholder': 'Enter your message...',
+						'placeholder': 'Enter your message',
 						'class': 'form-control',
 						'rows': 50,
 						'cols': 70,
 					})
 				)
+	sender = forms.EmailField(
+					widget=forms.TextInput(
+					attrs={
+						'placeholder': 'Enter your email address',
+						'class': 'form-control',
+					})
+				)
+
 	recipient = forms.EmailField(
 					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter email address of recipient...',
+						'placeholder': 'Enter email address of recipient',
 						'class': 'form-control',
 					})
 				)
@@ -39,6 +47,7 @@ class EmailsForm(forms.ModelForm):
 		fields = [
 			'name',
 			'message',
+			'sender',
 			'recipient',
 			'attach'
 		]

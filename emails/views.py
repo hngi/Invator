@@ -18,7 +18,7 @@ def email_invoice(request):
 			print("Form works!")
 			subject = f'Message from {form.cleaned_data["name"]}'
 			message = form.cleaned_data["message"]
-			sender = settings.DEFAULT_FROM_EMAIL
+			sender = form.cleaned_data["sender"]
 			recipient = form.cleaned_data["recipient"]
 			files = request.FILES.getlist("attach")
 			try:
@@ -30,8 +30,8 @@ def email_invoice(request):
 				#sg.send(mail.send())
 			except BadHeaderError:
 				return HttpResponse("Invalid header found!")
-			return HttpResponse("Success... Your email has been sent!")
-	return render(request, "emails.html", {'form': form})
+			return render(request, "")
+	return render(request, "email-invoice.html", {'form': form})
 
 
 
