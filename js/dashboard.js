@@ -100,3 +100,8 @@ function fillYears() {
 function setCurrMonth(today) {
     document.dateChooser.chooseMonth.selectedIndex = today.getMonth()
 }
+
+// alert
+function myAlert() {
+    alert("Sent Successfully!");
+  }

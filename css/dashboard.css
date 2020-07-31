@@ -306,6 +306,34 @@ td .user-pic{
 #tableHeader{
     color: #f1f1f1;
 }
+.contact-box{
+    width: 80%;
+    height: 80%;
+    margin: 20px 10%;
+    padding: 20px 40px;
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+}
+.contact-box h3{
+    font-weight: 600;
+    color: #001f3f;
+}
+.contact-input{
+    width: 100%;
+    margin: 10px 0;
+}
+.contact-msg{
+    width: 97%;
+    margin: 10px 1.5%;
+}
+.contact-btn{
+    background: #001f3f;
+    color: #f1f1f1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
 @media (max-width: 480px){
     body{
         font-size: 14px;
