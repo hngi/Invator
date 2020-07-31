@@ -1,7 +1,7 @@
 from django.shortcuts import render
-import weasyprint
+#import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 import tempfile
 from django.http import Http404, HttpResponse
 from .models import Invoice
@@ -45,3 +45,19 @@ def searchbar(request):
         search = request.GET.get('search')
         post = Invoice.objects.all().filter(invoice_id=search)
         return render(request, 'searchbar.html', {'post': post})
+
+def dashboard(request):
+    '''views for the dashboard template'''
+    if request.user.is_authenticated:
+        user = request.user
+        #print(user)
+        # if user.is_anonymous:
+        #     pass
+        # if user.is_authenticated:
+        auth_invoice = Invoice.objects.filter(user=user)
+        # show the latest invoices
+        order_invoice = auth_invoice.order_by("-time")
+        # only show 4 invoices at a time
+        context = order_invoice[:4]
+        return render(request, "dashboard.html", {'data': context})
+    return render(request, "dashboard.html")

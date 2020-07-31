@@ -31,7 +31,7 @@ class Transaction(models.Model):
 
 class Invoice(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # invoice_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    #invoice_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     to_full_name = models.CharField(max_length=255, null=True, blank=True)
     to_address = models.CharField(max_length=500, null=True, blank=True)
     to_phone = models.CharField(max_length=15, null=True, blank=True)
@@ -50,4 +50,7 @@ class Invoice(models.Model):
     from_phone = models.CharField(max_length=15, null=True, blank=True)
     transactions = models.ManyToManyField(Transaction)
     date_created = models.DateField(auto_now_add=True)
+    grand_total = models.IntegerField(null=True, blank=True)
+    # just for tracking recents
+    time = models.DateTimeField(auto_now_add=True)
 
