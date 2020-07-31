@@ -16,10 +16,9 @@ Amount by contract
 class Invator(models.Model):
     Name = models.CharField(max_length=255,verbose_name='name')
     Workdone = models.CharField(max_length=255)
-    Amount = models.CharField(max_length=255000000)
-    Hours = models.CharField(max_length=2500000)
-    HourAmount = models.CharField(max_length=255000000)
-    ContractAmount = models.CharField(max_length=255000000)
+    Amount = models.CharField(max_length=2550000)
+    HourAmount = models.CharField(max_length=2550000)
+    ContractAmount = models.CharField(max_length=2550000)
 
 
 class Transaction(models.Model):

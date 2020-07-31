@@ -4,13 +4,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-@font-face{
+/* @font-face{
     font-family: bob;
     src: url(../assets/Bobber/bobber_typeface_cs4.ai);
-}
+} */
 @font-face{
     font-family: mont;
-    src: url(../assets/montserrat/Montserrat-Regular.otf);
+    src: url(../asset/montserrat/Montserrat-Regular.otf);
 }
 body{
     font-family: 'Montserrat', sans-serif;
@@ -32,7 +32,7 @@ nav a{
 }
 .navbar-brand{
     font-size: 30px;
-    font-family: bob;
+    font-family: mont;
 }
 .user{
     position: absolute;
