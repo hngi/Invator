@@ -1,0 +1,11 @@
+{{ error }} 
+{% if post %}
+<h1>Search result</h1>
+<br />
+{% for i in post %}
+<h2>{{ i.user }}: {{ i.invoice_id }}</h2>
+{{ endfor }} 
+{{ else }}
+<h2>Not found</h2>
+
+{% endif %}
