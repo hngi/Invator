@@ -40,6 +40,12 @@ def preview_template(request, id):
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
     return render(request, "preview_template_1.html", context)
 
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post = Invoice.objects.all().filter(id=search)
+        return render(request, 'searchbar.html', {'post': post})
+
 def dashboard(request):
     '''views for the dashboard template'''
     if request.user.is_authenticated:
