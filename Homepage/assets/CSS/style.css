@@ -33,12 +33,12 @@ body {
 }
 
 .nav-link{
-  color: #001f3f;
+  color: #0074d9;
 }
 
 .nav-link-css {
   font-weight: 500;
-  color: #001f3f !important;
+  color: #0074d9 !important;
   border-radius: 5px;
   -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
@@ -60,7 +60,7 @@ body {
 }
 
 .logo{
-  color: #001f3f;
+  color: #0074d9;;
 }
 
 .try-it-btn{
