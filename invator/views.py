@@ -8,6 +8,9 @@ from .models import Invoice
 from django.db.models import Sum, F
 from datetime import datetime
 from django.contrib import messages 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 def download_to_pdf(request, id):
@@ -64,14 +67,14 @@ def dashboard(request):
             password = request.POST['password']
             job_type = request.POST['job_type']
             email = request.POST["email"]
-            if User.objects.filter(username=username).exists():
+            other_user = User.objects.exclude(id = request.user.id)
+            if other_user.filter(username=username).exists():
                 error = 'username already taken.'
                 return render(request, 'dashboard.html',{'error':error})
             elif password == "":
                 error = 'password should not be blank'
                 return render(request, 'dashboard.html',{'error':error})
-
-            else:
+            elif User.objects.filter(username=username).exists():
                 user.username = username
                 user.first_name = fullname
                 user.set_password(password)
@@ -80,7 +83,8 @@ def dashboard(request):
                 print(password,username,email)
                 userp = User.objects.get(email=email)
                 userp.profile.job_type = job_type
-                userp.save()           
+                userp.save()
+                          
         return render(request, "dashboard.html", {'data': context})
 
     return redirect("/login")
