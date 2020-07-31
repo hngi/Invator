@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 #import weasyprint
 from django.template.loader import render_to_string
 #from weasyprint import HTML
@@ -40,6 +40,10 @@ def preview_template(request, id):
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
     return render(request, "preview_template_1.html", context)
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 def dashboard(request):
     '''views for the dashboard template'''
     if request.user.is_authenticated:
@@ -54,4 +58,4 @@ def dashboard(request):
         # only show 4 invoices at a time
         context = order_invoice[:4]
         return render(request, "dashboard.html", {'data': context})
-    return render(request, "dashboard.html")
+    return redirect("/login")
