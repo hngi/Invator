@@ -1,0 +1,35 @@
+note: this can only work for https://invator.herokuapp.com/
+
+when logged into the admin after migration, 
+scroll down to the bottom of the page and click on "social applications"
+click on "add social application"
+select "Google" as provider
+enter name as //invator.herokuapp.com
+client id: 1098679487191-8535prbtgq1h5g1ig495b93ojua6dpge.apps.googleusercontent.com
+secret key: dRidGh-_6A_lRmvyO4wo6nLE
+
+scroll down to sites
+you should have example.com there under the available sites
+click on it and click the foward icon to move to chosen sites
+now click save and go back to homepage
+
+
+In the homepage click on "sites" and select the available site there, which in this case should be example.com
+Enter
+Domain name: invator.herokuapp.com
+NB:without https://
+Displaye name: Invator
+
+save it and try testing
+
+
+
+
+Incase you are working with localhost
+use these details when following the above steps
+client id: 13617910834-cls01fo5mmbdjfbspr7pculgq46fo8qc.apps.googleusercontent.com
+secret key: GNhoFnk4NaTPky-uv7KxWsbs
+Domain name: 127.0.0.1:8000
+
+Regards!!
+Greg

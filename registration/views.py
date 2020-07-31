@@ -85,3 +85,6 @@ def dashboard(request):
 def logout(request):
     auth.logout(request)
     return redirect("/dashboard")
+
+def test(request):
+    return render(request, "registration/password_reset.html")
