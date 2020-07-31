@@ -27,13 +27,14 @@ class Transaction(models.Model):
     price = models.CharField(max_length=30, null=True, blank=True)
     quantity = models.CharField(max_length=30, null=True, blank=True)
     total = models.CharField(max_length=30, null=True, blank=True)
-    
+
 
 class Invoice(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # invoice_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    #invoice_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     to_full_name = models.CharField(max_length=255, null=True, blank=True)
     to_address = models.CharField(max_length=500, null=True, blank=True)
+    to_email = models.EmailField(max_length=20, null=True, blank=True)
     to_phone = models.CharField(max_length=15, null=True, blank=True)
     from_full_name = models.CharField(max_length=255, null=True, blank=True)
     from_phone = models.CharField(max_length=15, null=True, blank=True)
@@ -47,7 +48,10 @@ class Invoice(models.Model):
     tax = models.CharField(max_length=15, null=True, blank=True)
     brand_name = models.CharField(max_length=150, null=True, blank=True)
     terms = models.CharField(max_length=300, null=True, blank=True)
-    from_phone = models.CharField(max_length=15, null=True, blank=True)
+    from_email = models.EmailField(max_length=20, null=True, blank=True)
     transactions = models.ManyToManyField(Transaction)
     date_created = models.DateField(auto_now_add=True)
+    # grand_total = models.IntegerField(null=True, blank=True)
+    # just for tracking recents
+    time = models.DateTimeField(auto_now_add=True)
 
