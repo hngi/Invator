@@ -29,7 +29,7 @@ def contact_page(request):
                     ["believemanasseh@gmail.com"],
             )
             
-            return render(request, "contact.html" {"contact_form": form})
+            return render(request, "contact.html", {"contact_form": form})
     
 def homepage(request):
     return render(request, 'index.html')
