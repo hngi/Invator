@@ -1,3 +1,21 @@
+// Nav 
+$(function() {
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 10) {
+            $('.navbar').addClass('active');
+        } else {
+            $('.navbar').removeClass('active');
+        }
+    });
+});
+
+// Collapse the navbar link is clicked 
+
+$('.navbar-nav>li>a').on('click', function() {
+    $('.navbar-collapse').collapse('hide');
+});
+
+
 (function(jQuery) {
     // image upload 
     function readURL(input) {
@@ -122,9 +140,24 @@ Invoice.prototype = {
      * @returns {number}
      */
     calcGrandTotal: function() {
-        var grandTotal = Number(jQuery($.opt.subtotal).html()) -
-            // Number(jQuery($.opt.shipping).val()) -
-            Number(jQuery($.opt.discount).val());
+
+        // if statement when a tax value is 0 subtotal = grandtotal 
+        if (Number(jQuery($.opt.discount).val() / 100) == 0) {
+            var grandTotal = Number(jQuery($.opt.subtotal).html())
+
+        }
+        // Percentsge fixes
+        else {
+            var granTotal = Number(jQuery($.opt.subtotal).html())
+
+            var percent = Number(jQuery($.opt.subtotal).html()) *
+                // percentage change
+                Number(jQuery($.opt.discount).val() / 100);
+
+            var grandTotal = percent + granTotal
+
+        }
+
         grandTotal = self.roundNumber(grandTotal, 2);
 
         jQuery($.opt.grandTotal).html(grandTotal);
@@ -138,7 +171,7 @@ Invoice.prototype = {
      * @returns {number}
      */
     newRow: function() {
-        jQuery(".item-row:last").after('<tr class="item-row"><td class="item-name"><div class="delete-btn"><input type="text" class="form-control item" placeholder="Item" type="text"><button class="mt-2 btn-sm btn btn-primary"><a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a></button></div></td><td><input class="form-control price" placeholder="Price" type="text"> </td><td><input class="form-control qty" placeholder="Hours" type="text"></td><td><span class="total">0.00</span></td></tr>');
+        jQuery(".item-row:last").after('<tr class="item-row"><td class="item-name"><div class="delete-btn"><input type="text" class="form-control item" placeholder="Item" type="text"><a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a></div></td><td><input class="form-control price" placeholder="Price" type="text"> </td><td><input class="form-control qty" placeholder="Hours" type="text"></td><td><span class="total">0.00</span></td></tr>');
 
         if (jQuery($.opt.delete).length > 0) {
             jQuery($.opt.delete).show();
@@ -236,6 +269,5 @@ jQuery.fn.invoice.defaults = {
 
     subtotal: "#subtotal",
     discount: "#discount",
-    // shipping: "#shipping",
     grandTotal: "#grandTotal"
 };
