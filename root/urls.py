@@ -20,11 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('invator.urls')),
     path('', include('emails.urls')),
     
     path('', include('registration.urls')),
     path('accounts/', include('allauth.urls')),
+
+    path('', include('invator.urls')),
 ]
 
 if settings.DEBUG:
