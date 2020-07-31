@@ -16,6 +16,7 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'asset/css/dashboardstyle.css' %}">
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
 
     <title>Invator</title>
 </head>
@@ -217,12 +218,21 @@
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <div class="p-details">
                         <h4>My Profile</h4>
-                        <form id = "form" method="POST">   
+                        {% if error %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <span style="font-size:17px"></span>  {{ error }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                        <form  enctype="multipart/form-data" id = "form" method="POST">   
                             {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6 form-details">
                                 
                                 {% if user.is_authenticated %}
+                             
                                 
                                 <label for="fullname">Full Name: </label>
                                 <input name = "fullname" type="text" class="form-control input" value={{ user.first_name}} id = "fullname"><br>

@@ -7,6 +7,7 @@ from django.http import Http404, HttpResponse, JsonResponse
 from .models import Invoice
 from django.db.models import Sum, F
 from datetime import datetime
+from django.contrib import messages 
 
 
 def download_to_pdf(request, id):
@@ -63,19 +64,23 @@ def dashboard(request):
             password = request.POST['password']
             job_type = request.POST['job_type']
             email = request.POST["email"]
-            user.username = username
-            user.first_name = fullname
-            user.set_password(password)
-            user.email = email
-            user.save()
-            print(password,username,email)
-            userp = User.objects.get(email=email)
-            userp.profile.job_type = job_type
-            userp.save()
-            
-            
-        return render(request, "dashboard.html", {'data': context})
+            if User.objects.filter(username=username).exists():
+                error = 'username already taken.'
+                return render(request, 'dashboard.html',{'error':error})
+            elif password == "":
+                error = 'password should not be blank'
+                return render(request, 'dashboard.html',{'error':error})
 
-        
+            else:
+                user.username = username
+                user.first_name = fullname
+                user.set_password(password)
+                user.email = email
+                user.save()
+                print(password,username,email)
+                userp = User.objects.get(email=email)
+                userp.profile.job_type = job_type
+                userp.save()           
+        return render(request, "dashboard.html", {'data': context})
 
     return redirect("/login")
