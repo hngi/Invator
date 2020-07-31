@@ -67,7 +67,7 @@ div.parent{
 }
 
 .nav-toggle{
-    color: var(--black);
+    color: navy;
 }
 
 .bars{
@@ -119,50 +119,49 @@ div.parent{
     font-family: 'Bobbers Personal Use';
 }
 
-.color-changer.switch{
-    color: black;
-    background-color: rgb(235, 235, 235) !important;
-  
-  }
-  body.switch{
-    background-color: #242424;
-    color: unset;
-  }
-  
-  input[type="checkbox"] {
+
+  body.open{
+    overflow: hidden;
+}
+.color-changer{
     position: fixed;
-    display: block;
-    z-index: 1;
-    bottom: 42px;
-    left: 20px;
-    border: none;
+    padding: 10px 20px;
+    bottom: 20px;
+    border-radius: 100px;
     cursor: pointer;
+    z-index: 3000;
+    left: 20px;
+    color: white;
+    background-color: black;
     -webkit-appearance: none;
     transition: all 1s;
-    outline: none;
-  }
-  
-  input[type="checkbox"]:before {
-    content: "Dark";
-    position: absolute;
-    border-radius: 50%;
-    color: #fff;
-    background: #000;
-    padding: 10px 20px;
-  }
-  
-  input[type="checkbox"]:checked:before {
-    content: "Light";
-    color: #000;
-    background: #fff;
-  }
+}
 
-  input[type="checkbox"]:checked ~ * {
-    filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
-    -webkit-filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
-    display: block;
-    z-index: 10000;
-  }
+body.switch{
+    background-color: #242424;
+  color: white;
+}
+body.switch  {
+  filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+  -webkit-filter: invert(100%) hue-rotate(180deg) brightness(105%) contrast(85%);
+  display: block;
+  z-index: 10000;
+}
+
+button:focus {
+    outline: none;
+}
+
+a:not([href]):hover {
+    color: initial;
+    text-decoration: none;
+}
+.color-changer.switch {
+    color: white;
+    background-color: black;
+}
+
+  
 
 .logo{
     height: 50px;
