@@ -8,6 +8,7 @@ from .models import Invoice
 from django.db.models import Sum, F
 from datetime import datetime
 from django.conf import settings
+# import imgkit
 
 
 def download_to_pdf(request, id):
@@ -20,14 +21,15 @@ def download_to_pdf(request, id):
     print(vat)
     total = int(data["sum"]) + vat
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
+    # img = imgkit.from_file('templates/invoice/02.html', False)
     html_string = render_to_string('invoice/02.html', context)
     html = HTML(string=html_string,
     base_url=request.build_absolute_uri())
     result = html.write_pdf()
 
     # Creating http response
-    response = HttpResponse(result, content_type='application/pdf')
-    filename = "Invoice_%s.pdf" %(datetime.now())
+    response = HttpResponse(img, content_type="img/png")
+    filename = "Invoice_%s.png" %(datetime.now())
     content = "inline; filename='%s'" %(filename)
     content = "attachment; filename='%s'" %(filename)
     response['Content-Disposition'] = content
