@@ -22,6 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('invator.urls')),
     path('', include('emails.urls')),
+    
+    path('', include('registration.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

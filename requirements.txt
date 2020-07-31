@@ -18,3 +18,4 @@ starkbank-ecdsa==1.0.0
 tinycss2==1.0.2
 WeasyPrint==51
 webencodings==0.5.1
+django-allauth==0.42.0
