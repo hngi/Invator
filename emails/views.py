@@ -9,18 +9,6 @@ from django.conf import settings
 from .models import Emails
 from .forms import EmailsForm
 
-'''
-def send_email(subject, message, sender, recipient, attach):
-	email = EmailMessage(
-			subject,
-			message,
-			sender,
-			recipient
-		)
-	email.attach(attach.name, attach.read(), attach.content_type)
-	return email
-'''
-
 #@login_required
 def email_invoice(request):
 	form = EmailsForm()
@@ -30,7 +18,7 @@ def email_invoice(request):
 			print("Form works!")
 			subject = f'Message from {form.cleaned_data["name"]}'
 			message = form.cleaned_data["message"]
-			sender = settings.EMAIL_HOST_USER
+			sender = settings.DEFAULT_FROM_EMAIL
 			recipient = form.cleaned_data["recipient"]
 			files = request.FILES.getlist("attach")
 			try:

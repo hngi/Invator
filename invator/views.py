@@ -9,6 +9,20 @@ from django.db.models import Sum, F
 from datetime import datetime
 
 
+
+def contact_page(request):
+    form = EmailsForm()
+    if request.method == "POST":
+        form = EmailsF
+    email = EmailMessage(
+            subject,
+            message,
+            sender,
+            recipient
+        )
+    email.attach(attach.name, attach.read(), attach.content_type)
+    return email
+    
 def download_to_pdf(request, id):
     # pdf = weasyprint.HTML('http://127.0.0.1:8000').write_pdf()
     # new_file = file('google.pdf', 'wb').write(pdf)
