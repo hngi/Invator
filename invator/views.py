@@ -9,9 +9,28 @@ from .models import Invoice, Transaction
 from django.db.models import Sum, F
 from datetime import datetime
 from django.contrib import messages
+from .forms import ContactForm
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+def contact_page(request):
+    form = ContactForm()
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            message_name = form.cleaned_data["name"]
+            message_email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+
+            send_mail(
+                    message_name,
+                    message,
+                    message_email,
+                    ["believemanasseh@gmail.com"],
+            )
+            
+            return render(request, "contact.html", {"contact_form": form})
+    
 def homepage(request):
     return render(request, 'index.html')
 
@@ -131,4 +150,5 @@ def invoice(request):
             return render(request, "dashboard.html")
         return render(request, "invoice-gen.html")
     return redirect("/login")
+
 

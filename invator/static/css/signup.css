@@ -1,0 +1,118 @@
+
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat';
+    
+}
+
+#nav-btn {
+    margin: 10px;
+}
+
+
+.navbar .navbar-collapse {
+    text-align: center;
+  }
+
+  
+.dark {
+    background-color: #1d1d1d !important;
+    color: white !important;
+  }
+
+h1 {
+    font-size: 50px;
+}
+
+
+input {
+   width: 100% !important;
+   
+
+}
+
+button {
+    width: 100% !important;
+    font-size: 20px !important;
+    
+}
+
+label {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#sign-up {
+    font-size: 20px;
+}
+
+
+
+.form-text a:hover{
+    text-decoration: none;
+
+}
+
+
+.body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 100px;
+    height: 100%;
+    width: 100%;
+   
+}
+
+
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Montserrat';
+    height: 100%;
+    width: 100%;  
+}
+
+#nav-btn {
+    margin: 10px;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+  }
+
+.dark {
+    background-color: #1d1d1d !important;
+    color: white !important;
+}
+
+#skip {
+    margin-top: 10px;
+}
+
+
+@media (min-width: 768px){
+    .body {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+     } 
+ 
+ 
+     .form-group {
+         margin: 0 auto;
+         width: 50% !important;
+         display: block;
+ 
+     }
+     .form-lower {
+         margin: 0 auto;
+         width: 50% !important;
+         display: block;
+
+     } 
+ 
+ }
