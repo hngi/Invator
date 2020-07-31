@@ -225,16 +225,16 @@
                                 {% if user.is_authenticated %}
                                 
                                 <label for="fullname">Full Name: </label>
-                                <input type="text" class="form-control input" value={{ user.first_name}}><br>
+                                <input name = "fullname" type="text" class="form-control input" value={{ user.first_name}} id = "fullname"><br>
                                 <label for="username">Username: </label>
-                                <input type="text" class="form-control input" value={{ user.username}}><br>
+                                <input name = "username" id = "username" type="text" class="form-control input" value={{ user.username}}><br>
                                 <label for="password">Password: </label>
-                                <input type="password" class="form-control input" value="MyPassword"><br>
-                                <label for="email">Email: </label>
-                                <input type="email" class="form-control input" value= {{ user.email}} readonly><br>
+                                <input  name = "password" id = "password" type="password" class="form-control input" value=><br>
+                                <label  for="email">Email: </label>
+                                <input  name = "email" id = "email" type="email" class="form-control input" value= {{ user.email}} readonly><br>
                                 <label for="Job">Job Type: </label>
-                                <input type="text" class="form-control input" value={{user.profile.job_type}}>
-                                <button class="save">Save</button>
+                                <input name = "job_type" id = "job_type" type="text" class="form-control input" value={{user.profile.job_type}}>
+                                <button id="submit" type="submit" class="btn btn-primary">Save</button>
                                 {% endif %}
                             </div>
                             <div class="col-md-6">
@@ -242,7 +242,7 @@
                             </div>
                         </div>
                         </form>
-                        
+
                     </div>
                 </div>
               </div>

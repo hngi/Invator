@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.template.loader import render_to_string
 #from weasyprint import HTML
 import tempfile
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from .models import Invoice
 from django.db.models import Sum, F
 from datetime import datetime
@@ -57,5 +57,25 @@ def dashboard(request):
         order_invoice = auth_invoice.order_by("-time")
         # only show 4 invoices at a time
         context = order_invoice[:4]
+        if request.method == "POST":
+            fullname = request.POST['fullname']
+            username = request.POST['username']
+            password = request.POST['password']
+            job_type = request.POST['job_type']
+            email = request.POST["email"]
+            user.username = username
+            user.first_name = fullname
+            user.set_password(password)
+            user.email = email
+            user.save()
+            print(password,username,email)
+            userp = User.objects.get(email=email)
+            userp.profile.job_type = job_type
+            userp.save()
+            
+            
         return render(request, "dashboard.html", {'data': context})
+
+        
+
     return redirect("/login")
