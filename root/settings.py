@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
-from dotenv import load_dotenv
-load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q_rurh)c0jkcqt2wu^fi1t^&vq#rn0!#f39)5o4@77iaq!vz^8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'invator.herokuapp.com']
 
@@ -139,11 +136,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
@@ -152,7 +144,7 @@ STATICFILES_DIRS = [
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 '''
 SG_KEY = os.getenv('SENDGRID_API_KEY')
@@ -170,8 +162,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY')
-
-django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = '../../../../dashboard'
 
