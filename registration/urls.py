@@ -11,7 +11,7 @@ urlpatterns = [
     path('register/', v.register, name="register"),
     path('register_user/', v.register_u, name="register user"),
     path('login/', v.login, name="login"),
-    path('dashboard/', v.dashboard, name="Dashboard"),
+   # path('dashboard/', v.dashboard, name="Dashboard"),
     path('logout/', v.logout, name="logout"),
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="registration/password_reset.html"), name="reset_password"),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name="registration/password_reset_sent.html"), name="password_reset_done"),
