@@ -7,15 +7,17 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./assets/bootstrap-4.5.0-dist/css/bootstrap.min.css">
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="./assets/font-awesome-4.7.0/css/font-awesome.min.css">
-
+<script src="https://use.fontawesome.com/1ac25e29cf.js"></script>
     <!-- Ionicons -->
     <link rel="stylesheet" href="./assets/ionicons-2.0.1/css/ionicons.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Main css -->
-    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/darkdashboard.css">
 
     <title>Invator</title>
 </head>
@@ -24,7 +26,7 @@
     <nav>
         <div class="wrapper navbar navbar-expand-lg d-flex">
             <div class="logo">
-                <a href="index.html" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="img/Group 124 (2).png" alt=""></a>
+                <a class="navbar-brand" href="index.html">Invator</a>
             </div>
             <div class="user">
                 User Name
@@ -35,15 +37,13 @@
         <div class="wrapper">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                        aria-controls="pills-home" aria-selected="true">Dashboard</a>
+                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Dashboard</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                        aria-controls="pills-profile" aria-selected="false">Profile</a>
+                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
                 </li>
-            </ul>
-            <div class="tab-content" id="pills-tabContent">
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="row">
                         <div class="col-md-4 sidebar">
@@ -72,41 +72,27 @@
                                 <TR>
                                     <TH ID="tableHeader" COLSPAN=7></TH>
                                 </TR>
-                                <TR>
-                                    <TH>Sun</TH>
-                                    <TH>Mon</TH>
-                                    <TH>Tue</TH>
-                                    <TH>Wed</TH>
-                                    <TH>Thu</TH>
-                                    <TH>Fri</TH>
-                                    <TH>Sat</TH>
-                                </TR>
+                                <TR><TH>Sun</TH><TH>Mon</TH><TH>Tue</TH><TH>Wed</TH>
+                                <TH>Thu</TH><TH>Fri</TH><TH>Sat</TH></TR>
                                 <TBODY ID="tableBody"></TBODY>
                                 <TR>
                                     <TD COLSPAN=7>
-                                        <P>
-                                        <FORM NAME="dateChooser">
-                                            <SELECT NAME="chooseMonth" onChange="populateTable(this.form)">
-                                                <OPTION SELECTED>January
-                                                <OPTION>February
-                                                <OPTION>March
-                                                <OPTION>April
-                                                <OPTION>May
-                                                <OPTION>June
-                                                <OPTION>July
-                                                <OPTION>August
-                                                <OPTION>September
-                                                <OPTION>October
-                                                <OPTION>November
-                                                <OPTION>December
-                                            </SELECT>
-                                            <SELECT NAME="chooseYear" onChange="populateTable(this.form)">
-                                            </SELECT>
-                                        </FORM>
-                                        </P>
-                                    </TD>
+                                    <P>
+                                    <FORM NAME="dateChooser">
+                                        <SELECT NAME="chooseMonth" 
+                                        onChange="populateTable(this.form)">
+                                            <OPTION SELECTED>January<OPTION>February
+                                            <OPTION>March<OPTION>April<OPTION>May
+                                            <OPTION>June<OPTION>July<OPTION>August
+                                            <OPTION>September<OPTION>October
+                                            <OPTION>November<OPTION>December
+                                    </SELECT>
+                                    <SELECT NAME="chooseYear" onChange="populateTable(this.form)">
+                                    </SELECT>
+                                    </FORM>
+                                    </P></TD>
                                 </TR>
-                            </TABLE>
+                                </TABLE>
                         </div>
                         <div class="col-md-8">
                             <div class="content">
@@ -122,7 +108,7 @@
                                             </div>
                                             <div class="div-details">
                                                 <div class="invoice-id">Paid</div>
-                                                <div class="number">62</div>
+                                                <div class="number">64</div>
                                             </div>
                                         </div>
                                     </div>
@@ -293,7 +279,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+              </div>
         </div>
     </main>
 
@@ -317,7 +303,12 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./js/dashboard.js"></script>
+    <script src="./js/main.js"></script>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+                                        
 </body>
 
 </html>

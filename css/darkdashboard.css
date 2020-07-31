@@ -13,9 +13,9 @@
     src: url(../assets/montserrat/Montserrat-Regular.otf);
 }
 body{
-    font-family: mont;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
-    background:  url(../assets/SVG/Two\ Black\ Men\ Using\ Laptop.svg) rgba(240, 236, 236, 0.37);
+    background:  #1f1f1f;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -27,7 +27,7 @@ body{
     margin: 10px auto;
 }
 nav a{
-    color: #001f3f;
+    color: #c4c4c4;
     text-decoration: none;
 }
 .navbar-brand{
@@ -60,7 +60,7 @@ nav a{
     position: relative;
 }
 .profile{
-    background: #001f3f83;
+    background: #1f1f1f;
     border: none;
     border-radius: 20px;
     padding: 20px;
@@ -109,7 +109,7 @@ nav a{
 }
 .content{
     padding: 20px 50px;
-    background: rgba(235, 233, 233, 0.829);
+    background: rgba(91, 91, 91, 0.829);
     border: none;
     border-radius: 30px;
     width: 100%;
@@ -185,11 +185,12 @@ nav a{
 }
 th{
     font-size: 14px;
-    color: #666565;
+    color: #c3c3c3;
     font-weight: 200;
 }
 td{
     font-weight: 900;
+    color: #c5c5c5;
 }
 td .user-pic{
     margin-right: 15px;
@@ -200,7 +201,7 @@ td .user-pic{
     text-align: center;
 }
 .invoice-id{
-    color: #666565;
+    color: #ebebeb;
     font-size: 12px;
 }
 .unpaid{
@@ -305,34 +306,6 @@ td .user-pic{
 }
 #tableHeader{
     color: #f1f1f1;
-}
-.contact-box{
-    width: 80%;
-    height: 80%;
-    margin: 20px 10%;
-    padding: 20px 40px;
-    background: #fff;
-    border: none;
-    border-radius: 20px;
-}
-.contact-box h3{
-    font-weight: 600;
-    color: #001f3f;
-}
-.contact-input{
-    width: 100%;
-    margin: 10px 0;
-}
-.contact-msg{
-    width: 97%;
-    margin: 10px 1.5%;
-}
-.contact-btn{
-    background: #001f3f;
-    color: #f1f1f1;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
 }
 @media (max-width: 480px){
     body{
@@ -442,6 +415,18 @@ td .user-pic{
         justify-self: flex-end;
         align-self: flex-end;
     }
+    /* .sidebar{
+        width: 100%;
+        position: relative;
+        border-radius: 0;
+        overflow-x: hidden;
+    }
+    .content{
+        width: 100%;
+        margin-bottom: 30px;
+        margin-left: 0;
+        border-radius: 0;
+    } */
     .filter{
         width: 100%;
         border-radius: 30px;
