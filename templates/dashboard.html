@@ -25,7 +25,7 @@
     <nav>
         <div class="wrapper navbar navbar-expand-lg d-flex">
             <div class="logo">
-                <a class="navbar-brand" href="index.html">Invator</a>
+                <a class="navbar-brand" href="{% url 'homepage' %}">Invator</a>
             </div>
             <div class="user">
                 {% if user.is_authenticated %}
