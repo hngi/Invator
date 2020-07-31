@@ -18,3 +18,42 @@ $('#myModal').on('shown.bs.modal', function () {
   $("#toggleButton").click(function(){
     $("#invoice").toggle();
   });
+
+
+  $(document).ready(function(){
+    $('.color-changer').on('click', function(){
+        $('body').toggleClass("switch")
+    })
+})
+$(document).ready(function(){
+    $('.color-changer').on('click', function(){
+        $('nav ul li a').toggleClass("switch")
+    })
+})
+$(document).ready(function(){
+    $('.color-changer').on('click', function(){
+        $('.color-changer').toggleClass("switch")
+    })
+})
+$(document).ready(function(){
+    $('.color-changer').on('click', function(){
+        $('.card-body').toggleClass("switch")
+    })
+})
+$(document).ready(function(){
+    $('.color-changer').on('click', function(){
+        $('.burger span').toggleClass("switch")
+    })
+})
+
+let changeColor =  document.querySelector('.color-changer')
+let body =  document.querySelector('body')
+
+changeColor.addEventListener('click',() => {
+    if(body.className == ""){
+        changeColor.innerHTML = "Light"
+    }
+    else{
+        changeColor.innerHTML = "Dark"
+    }
+})
