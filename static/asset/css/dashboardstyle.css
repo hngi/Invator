@@ -3,18 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
-@font-face{
+/* @font-face{
     font-family: bob;
     src: url(../assets/Bobber/bobber_typeface_cs4.ai);
-}
+} */
 @font-face{
     font-family: mont;
-    src: url(../assets/montserrat/Montserrat-Regular.otf);
+    src: url(../asset/montserrat/Montserrat-Regular.otf);
 }
 body{
     font-family: mont;
     font-style: normal;
-    background:  url(../assets/SVG/Two\ Black\ Men\ Using\ Laptop.svg) rgba(240, 236, 236, 0.37);
+    background:  url(../asset/SVG/Two\ Black\ Men\ Using\ Laptop.svg) rgba(240, 236, 236, 0.37);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -31,7 +31,7 @@ nav a{
 }
 .navbar-brand{
     font-size: 30px;
-    font-family: bob;
+    font-family: mont;
 }
 .user{
     position: absolute;
