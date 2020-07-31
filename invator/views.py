@@ -43,7 +43,7 @@ def preview_template(request, id):
 def searchbar(request):
     if request.method == 'GET':
         search = request.GET.get('search')
-        post = Invoice.objects.all().filter(invoice_id=search)
+        post = Invoice.objects.all().filter(id=search)
         return render(request, 'searchbar.html', {'post': post})
 
 def dashboard(request):

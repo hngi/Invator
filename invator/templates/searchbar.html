@@ -4,7 +4,7 @@
 <br />
 {% for i in post %}
 <h2>{{ i.user }}: {{ i.invoice_id }}</h2>
-{{ endfor }} 
+{% endfor %} 
 {{ else }}
 <h2>Not found</h2>
 

@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('<str:id>/', views.download_to_pdf, name="download_to_pdf"),
+    #path('<str:id>/', views.download_to_pdf, name="download_to_pdf"),
     path('preview/<str:id>', views.preview_template, name="preview_template"),
     path('searchbar/', views.searchbar, name='searchbar'),
     #path('<str:id>/', views.download_to_pdf, name="download_to_pdf"),
