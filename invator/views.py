@@ -12,6 +12,9 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+def homepage(request):
+    return render(request, 'index.html')
+
 def download_to_pdf(request, id):
     # pdf = weasyprint.HTML('http://127.0.0.1:8000').write_pdf()
     # new_file = file('google.pdf', 'wb').write(pdf)
