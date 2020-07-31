@@ -1,6 +1,4 @@
-/*******************
-  UTILITY FUNCTIONS
-********************/
+
 // day of week of month's first day
 function getFirstDay(theYear, theMonth) {
     var firstDate = new Date(theYear, theMonth, 1)
