@@ -27,25 +27,29 @@ def register_u(request):
             return JsonResponse("<p class='alert alert-success' style='text-align:center'>Registration successful<p>", safe=False)
 
 def register(request):
-    if request.method == "POST":
-        full_name = request.POST['full_name']
-        email = request.POST['email']
-        job_type = request.POST['job_type']
-        username = request.POST['username']
-        password = request.POST['password']
-        if User.objects.filter(username=username).exists():
-            return JsonResponse("<p class='alert alert-danger' style='text-align:center'>Username already exists<p>", safe=False)
-        elif User.objects.filter(email=email).exists():
-            return JsonResponse("<p class='alert alert-danger' style='text-align:center'>E-mail already in use<p>", safe=False)
-        else:
-            user = User.objects.create_user(username=username, password=password, email=email, first_name=full_name)
-            user.save()
-            userp = User.objects.get(email=email)
-            userp.profile.job_type = job_type
-            userp.save()
+    r_user = request.user
+    if r_user.is_authenticated:
+        return redirect("/dashboard")
+    else:
+        if request.method == "POST":
+            full_name = request.POST['full_name']
+            email = request.POST['email']
+            job_type = request.POST['job_type']
+            username = request.POST['username']
+            password = request.POST['password']
+            if User.objects.filter(username=username).exists():
+                return JsonResponse("<p class='alert alert-danger' style='text-align:center'>Username already exists<p>", safe=False)
+            elif User.objects.filter(email=email).exists():
+                return JsonResponse("<p class='alert alert-danger' style='text-align:center'>E-mail already in use<p>", safe=False)
+            else:
+                user = User.objects.create_user(username=username, password=password, email=email, first_name=full_name)
+                user.save()
+                userp = User.objects.get(email=email)
+                userp.profile.job_type = job_type
+                userp.save()
 
-            return JsonResponse("<p class='alert alert-success' style='text-align:center'>Registration successful<p>", safe=False)
-    return render(request, "registration/signup.html")
+                return JsonResponse("<p class='alert alert-success' style='text-align:center'>Registration successful<p>", safe=False)
+        return render(request, "registration/signup.html")
 
 def login(request):
     r_user = request.user
@@ -56,7 +60,7 @@ def login(request):
             password = request.POST['password']
             email = request.POST['email']
 
-            try:
+            if User.objects.filter(email=email).exists():
                 c_user = User.objects.get(email=email)
                 username = c_user.username
                 user = auth.authenticate(username=username,password=password)
@@ -65,9 +69,11 @@ def login(request):
                     return JsonResponse("<p class='alert alert-success' style='text-align:center'>Login successful<p><script>window.location.href = '../dashboard';</script>", safe=False)
                     return redirect("/dashboard")
                 else:
-                    return JsonResponse("<p class='alert alert-danger' style='text-align:center'>User credentials not found<p>", safe=False)
-            except:
+                    return JsonResponse("<p class='alert alert-danger' style='text-align:center'>Wrong email address or password<p>", safe=False)
+
+            else:
                 return JsonResponse("<p class='alert alert-danger' style='text-align:center'>Email address does not exist<p>", safe=False)
+
         return render(request, "registration/login.html")
 
 def dashboard(request):
