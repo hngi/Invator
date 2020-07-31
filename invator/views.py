@@ -9,19 +9,21 @@ from django.db.models import Sum, F
 from datetime import datetime
 from django.contrib import messages 
 from django.contrib.auth import get_user_model
-
 User = get_user_model()
-
 
 def download_to_pdf(request, id):
     # pdf = weasyprint.HTML('http://127.0.0.1:8000').write_pdf()
     # new_file = file('google.pdf', 'wb').write(pdf)
     obj = Invoice.objects.get(id=id)
     data = obj.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
-    print(data)
-    context = {"obj":obj, "sum":data["sum"]}
-    html_string = render_to_string('preview_template_1.html', {'obj': obj})
-    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+    print(data, obj.tax)
+    vat = int(data["sum"]) * float(obj.tax) / 100
+    print(vat)
+    total = int(data["sum"]) + vat
+    context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
+    html_string = render_to_string('invoice/02.html', context)
+    html = HTML(string=html_string,
+    base_url=request.build_absolute_uri())
     result = html.write_pdf()
 
     # Creating http response
@@ -44,9 +46,11 @@ def preview_template(request, id):
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
     return render(request, "preview_template_1.html", context)
 
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post = Invoice.objects.all().filter(id=search)
+        return render(request, 'searchbar.html', {'post': post})
 
 def dashboard(request):
     '''views for the dashboard template'''
