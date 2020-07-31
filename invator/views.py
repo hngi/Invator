@@ -39,3 +39,9 @@ def preview_template(request, id):
     total = int(data["sum"]) + vat
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
     return render(request, "preview_template_1.html", context)
+
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post = Invoice.objects.all().filter(invoice_id=search)
+        return render(request, 'searchbar.html', {'post': post})
