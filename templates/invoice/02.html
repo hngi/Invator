@@ -54,7 +54,7 @@
                         <tbody>
                         {% for transaction in obj.transactions.all %}
                           <tr>
-                            <th scope="row">{{transaction.id|stringformat:"02d" }}</th>
+                            <th scope="row">{{forloop.counter|stringformat:"02d" }}</th>
                             <td>{{ transaction.item }}</td>
                             <td>${{transaction.price}}</td>
                             <td>{{transaction.quantity}}</td>

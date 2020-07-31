@@ -79,9 +79,9 @@ def login(request):
 def dashboard(request):
     r_user = request.user
     if r_user.is_authenticated:
-        return render(request, "registration/dashboard.html")
+        return render(request, "dashboard.html")
     return redirect("/login")
 
 def logout(request):
     auth.logout(request)
-    return redirect("/dashboard")
+    return redirect("/login")

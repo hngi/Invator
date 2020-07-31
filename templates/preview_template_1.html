@@ -85,7 +85,7 @@
                         <a href="#"><button class="btn">Preview</button></a>
                         <p>You can also download or export the invoice to your mail</p>
                         <a href="{%url 'download_to_pdf' obj.id %}"><button class="btn">Download</button></a>  <br> <br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="email">Get through mail</button> 
+                        <a href="{% url 'email-invoice' %}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="email">Get through mail</button></a> 
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -156,7 +156,7 @@
                                         <tbody>
                                         {% for transaction in obj.transactions.all %}
                                           <tr>
-                                            <th scope="row">{{transaction.id|stringformat:"02d" }}</th>
+                                            <th scope="row">{{forloop.counter|stringformat:"02d" }}</th>
                                             <td>{{ transaction.item }}</td>
                                             <td>${{transaction.price}}</td>
                                             <td>{{transaction.quantity}}</td>
@@ -175,7 +175,7 @@
                                             <th scope="row"></th>
                                             <td></td>
                                             <td></td>
-                                            <td>Total VAT {{obj.tax}}</td>
+                                            <td>Total VAT {{obj.tax}}%</td>
                                             <td>${{ vat|floatformat:2  }}</td>
                                           </tr>
                                           <tr>
