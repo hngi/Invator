@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 #import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 import tempfile
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from .models import Invoice
 from django.db.models import Sum, F
 from datetime import datetime
-from django.conf import settings
-
+from django.contrib import messages 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def download_to_pdf(request, id):
     # pdf = weasyprint.HTML('http://127.0.0.1:8000').write_pdf()
@@ -64,5 +65,30 @@ def dashboard(request):
         order_invoice = auth_invoice.order_by("-time")
         # only show 4 invoices at a time
         context = order_invoice[:4]
+        if request.method == "POST":
+            fullname = request.POST['fullname']
+            username = request.POST['username']
+            password = request.POST['password']
+            job_type = request.POST['job_type']
+            email = request.POST["email"]
+            other_user = User.objects.exclude(id = request.user.id)
+            if other_user.filter(username=username).exists():
+                error = 'username already taken.'
+                return render(request, 'dashboard.html',{'error':error})
+            elif password == "":
+                error = 'password should not be blank'
+                return render(request, 'dashboard.html',{'error':error})
+            elif User.objects.filter(username=username).exists():
+                user.username = username
+                user.first_name = fullname
+                user.set_password(password)
+                user.email = email
+                user.save()
+                print(password,username,email)
+                userp = User.objects.get(email=email)
+                userp.profile.job_type = job_type
+                userp.save()
+                          
         return render(request, "dashboard.html", {'data': context})
-    return render(request, "dashboard.html")
+
+    return redirect("/login")

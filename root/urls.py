@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('registration.urls')),
     path('accounts/', include('allauth.urls')),
 
-    path('tried/', include('invator.urls')),
+    path('', include('invator.urls')),
 ]
 
 if settings.DEBUG:

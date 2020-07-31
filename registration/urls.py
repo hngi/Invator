@@ -10,7 +10,7 @@ urlpatterns = [
     path('register/', v.register, name="register"),
     path('register_user/', v.register_u, name="register user"),
     path('login/', v.login, name="login"),
-    path('dashboard/', v.dashboard, name="Dashboard"),
+   # path('dashboard/', v.dashboard, name="Dashboard"),
     path('logout/', v.logout, name="logout"),
     # path('accounts/', include('allauth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
