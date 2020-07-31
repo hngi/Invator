@@ -20,6 +20,18 @@ body {
 .dark-mode {
   background-color: #1d1d1d;
   color: #fff;
+  box-shadow: none;
+
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background: #1d1d1d;
+  }
+
+  body a {
+    color: #fff !important;
+  }
 }
 
 .nav-item-css {
@@ -60,8 +72,10 @@ body {
 }
 
 .logo{
-  color: #0074d9;;
+  color: #0074d9;
+  font-size: 20px !important;
 }
+
 
 .try-it-btn{
   background-color: #001f3f;
@@ -88,10 +102,16 @@ body {
   color: #fff;
   border: none;
 }
-
+.adds{
+  margin-bottom: 35px;
+}
 
 .jumbotron{
   padding-bottom: 1rem !important;
+}
+
+.shad{
+  box-shadow: 2px 2px 2px 2px grey;
 }
 
 .carousel-indicators{
@@ -197,7 +217,10 @@ hr{
   background: #0074d9 !important;
   margin-bottom: 25px; 
 }
-
+.no-deco:hover{
+  text-decoration: none;
+  background-color: #0074d9;
+}
 button{
   background-color: #001f3f;
   padding: 10px;
