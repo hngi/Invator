@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for invator project.
 
@@ -159,3 +160,4 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 
 LOGIN_REDIRECT_URL = '../../../../dashboard'
 
+django_heroku.settings(locals())
