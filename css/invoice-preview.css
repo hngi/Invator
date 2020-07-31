@@ -420,6 +420,20 @@ ul.invoice-ul li{
 }
 
 
+@media screen and (max-width:770px){
+    .preview div.card1 button.btn {
+    margin-left: 0;
+    width: 50%;
+    margin: 0 25%;
+  }
+
+  .preview div.card1 p{
+    margin-top: 50px;
+  }
+
+}
+
+
 
 @media screen and (max-width:500px){
     .invoice-top {
@@ -432,13 +446,17 @@ ul.invoice-ul li{
    }
 
 }
-@media screen and (max-width:300px){
+@media screen and (max-width:350px){
    .invoice-base p{
     line-height: 18px;
    }
 
    .invoice-wrapper ul li{
     line-height: 18px;
+   }
+
+   .preview div.card1 button.btn{
+        font-size: 10px;
    }
 }
 
