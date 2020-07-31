@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<script src="https://kit.fontawesome.com/3dc89e56d7.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-	<!--<link type="text/css" rel="stylesheet" href="{% static 'css/bot.css' %}">-->
 	<title>Email Invoice</title>
 	<style type="text/css">
 		.container {
@@ -20,7 +19,7 @@
 <body>
 	<div class="container">
 		<h1>Email Invoice To Client</h1>
-		<form action="" method="POST" enctype="multipart/form-data">
+		<form action="{% url 'emails:email-invoice' %}" method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			{% for field in form %} 
 			<div class="form-group">
