@@ -147,9 +147,10 @@ def invoice(request):
             print(request.POST)
             # brand_name = request.POST["brand_name"]
             tax = request.POST["tax"]
-            item = request.POST["item"]
-            price = request.POST["price"]
-            quantity = request.POST["quantity"]
+            item = request.POST.getlist("item")
+            price = request.POST.getlist("price")
+            quantity = request.POST.getlist("quantity")
+            to_full_name = request.POST["to_name"]
             #total = request.POST["total"] or None
             to_full_name = request.POST["to_name"]
             #bank_name = request.POST["bank_name"]
@@ -172,11 +173,15 @@ def invoice(request):
                     to_full_name=to_full_name, from_email=from_email,
                     to_email=to_email,tax=tax )
 
-            xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
-            data = xo.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
-            vat = int(data["sum"]) * float(xo.tax) / 100
-            total = int(data["sum"]) + vat
-            context = {"obj":xo, "sum":data["sum"],"vat":vat, "total":total}
+            # xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
+            # data = xo.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
+            # vat = int(data["sum"]) * float(xo.tax) / 100
+            # total = int(data["sum"]) + vat
+            for pric, quantit, ite in zip(price, quantity, item):
+                print(pric, quantit)
+                xo.transactions.create(price=pric, item=ite, quantity=quantit,
+                                       total=int(pric)*int(quantit))
+            context = {"obj":xo}
             return render(request, "preview_template_1.html", context)
         return redirect('login')
     else:
