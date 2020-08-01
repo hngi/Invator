@@ -31,6 +31,7 @@ class Transaction(models.Model):
 class Invoice(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     #invoice_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title  = models.CharField(max_length=255, null=True, blank=True)
     to_full_name = models.CharField(max_length=255, null=True, blank=True)
     to_address = models.CharField(max_length=500, null=True, blank=True)
     to_email = models.EmailField(max_length=255, null=True, blank=True)

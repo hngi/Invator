@@ -47,3 +47,22 @@ section {
     margin-top: 7rem;
     margin-bottom: 7rem;
 }
+ @media (max-width: 576px) {
+
+#subtota,th,.total,td.text-right,td{
+    font-size: 10px;
+}
+.table th {
+    padding: .5rem;
+}
+.form-control{
+    font-size:.5rem;
+}
+label,span.ml-2{
+    font-size: .75rem;
+}
+h4{
+    font-size: 20px;
+}
+
+}
