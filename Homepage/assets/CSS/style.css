@@ -148,12 +148,17 @@ body {
 }
 
 .fa-arrow-right{
-  color: #000;
+  color: #fff;
 }
 
 .fa-arrow-left{
+  color: #fff;
+}
+.fa-arrow-left:hover{
   color: #000;
-  background-color: #EBEBEB;
+}
+.fa-arrow-right:hover{
+  color: #000;
 }
 .carousel-control-next-icon{
   background-color: rgba(0, 0, 0, 0.04) !important;
