@@ -51,29 +51,20 @@
             <div class="contact-box">
                 <h3>Send Invoice To Client</h3>
                 <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-                	
                 	{{form.errors}}
-                    <div class="row">
+                	<div class="row">
                         <div class="col-md-6">
-                            {{form.name}}
+                        	{{form.name}}
                         </div>
                         <div class="col-md-6">
-                            {{form.sender}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{form.subject}}
-                        </div>
-                        <div class="col-md-6">
-                            {{form.recipient}}
+                          {{form.recipient}}
                         </div>
                     </div>
                     <div class="row">
                         {{form.message}}
                     </div>
-                    
-                    <button class="contact-btn" onclick="myAlert()">Send</button>
+                    <input name="attach" type="file" class="form-control-file"><br>
+                    <button class="contact-btn">Send</button>
                 </form>
             </div>
         </div>

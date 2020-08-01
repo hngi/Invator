@@ -30,9 +30,11 @@
       crossorigin="anonymous"
     />
 
+
+
                        <!-- CSS -->
 
-    <link rel="stylesheet" href="{% static 'homepage/assets/CSS/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
              <!-- Font Awesome -->
     
@@ -51,7 +53,7 @@
 
    <div class="container  p-3 px-md-4 mb-3 navbar navbar-light  navbar-expand-lg  navbar-css  brand-logo">
 
-    <a href="{% url 'invator:homepage' %}" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="{% static 'img/Group 124 (2).png' %}" alt=""></a>
+    <a href="#" class="navbar-brand nav-logo"><span class="logo"><b>INVATOR</b></span> </a>
     <button
       type="button"
       class="navbar-toggler"
@@ -65,11 +67,14 @@
 
     <div class="collapse navbar-collapse" id="myNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item nav-item-css"><a href="{% url 'invator:homepage' %}" class="nav-link nav-link-css">Home</a></li>
-        <li class="nav-item nav-item-css"><a href="{% url 'invator:invoice' %}" class="nav-link nav-link-css">Invoices</a>
+        <li class="nav-item nav-item-css"><a href="#" class="nav-link nav-link-css">Home</a></li>
+        <li class="nav-item nav-item-css"><a href="{% url 'invator:invoice' %}" class="nav-link nav-link-css">Invoice</a>
         </li>
         <li class="nav-item nav-item-css">
           <a href="{% url 'invator:dashboard' %}" class="nav-link nav-link-css">Dashboard</a>
+        </li>
+         <li class="nav-item nav-item-css">
+          <a href="{% url 'invator:contact' %}" class="nav-link nav-link-css">Contact Us</a>
         </li>
       </ul>
     </div>
@@ -83,29 +88,30 @@
     
  <div class="container"><hr><br><br>
   <div class="text-right">
-    <a class="btn try-it-btn" role="button" onclick="myFunction()"><span>Dark/Light Mode</span></a>
+    <a class="btn try-it-btn no-deco adds" role="button" onclick="myFunction()"><span>Dark/Light Mode</span></a>
 
   </div>
  
   <div class="row">
 
       <div class="col-md-6">
-          <img src="{% static 'homepage/assets/Images/invoice2.png' %}" class="img-fluid">
+          <img src="{% static 'imgs/invoice2.png' %}" class="img-fluid shad">
       </div>
 
-      <div class="col-md-6">
-          <br><br><h2 class="get-started">A quick and easy way <br>to get an invoice</h2><br>
+      <div class="col-md-6 ">
+          <br><h2 class="get-started adj">A quick and easy way <br>to get an invoice</h2><br>
           <p>Create your invoice in few steps.   <br> Download and print in images, PDF, <br> Excel or Microsoft document.</p><br>
-          <p>Join thousands of freelancers</p><br><br>
-          <a href="#"><button class="text-white btn-block">Create your Free Invoice</button></a>
+          <p>Join thousands of freelancers</p><br>
+          <a href="#" class="no-deco changs"><button class="text-white btn-block">Create your Free Invoice</button></a>
       </div>
-  </div>
+  </div><br>
 
+  <div class="jumbotron">
   <div class="row mb-2">
       <div class="col-md-2"></div>
       <div class="col-md-8">
               <br><br>
-          <h2 class="get-started">Get Your Free Invoice</h2> <br>
+          <h2>Get Your Free Invoice</h2> <br>
 
           <p>You’ve put together a great business for your client and you want to top it up with a great invoice finish. How do you make this happen?<br><br>
 
@@ -117,7 +123,7 @@
           </p>
       </div>
   </div>
-
+  </div>
    <!-- Download Template -->
 
     <div class="container mt-5">
@@ -126,7 +132,7 @@
              <h2 class="get-started card-title mb-4 text-center">Order
            Template</h2>
         <div>
-          <img class="card-img-top" src="{% static 'homepage/assets/Images/Invoice2-1.png' %}"  class="thumbnail" style="height: 320px;" alt="Card image cap">
+          <img class="card-img-top shad" src="{% static 'imgs/Invoice2-1.png' %}"  class="thumbnail" style="height: 320px;" alt="Card image cap">
           <div class="card-body text-center">
             <p class="card-text">You can download or modify an order template</p>
             <a href="#" class="btn learn-more-btn">Download</a>
@@ -137,7 +143,7 @@
           <div class="col-sm-4">
             <h2 class="get-started card-title mb-4 text-center">Invoice Templates</h2>
            <div>
-             <img class="card-img-top" src="{% static 'homepage/assets/Images/Invoice3-1.png' %}" style="height: 320px;" alt="Card image cap">
+             <img class="card-img-top shad" src="{% static 'imgs/Invoice3-1.png' %}" style="height: 320px;" alt="Card image cap">
              <div class="card-body text-center">
                <p class="card-text">You can download or modify an Invoice template</p>
                <a href="#" class="btn learn-more-btn">Download</a>
@@ -148,7 +154,7 @@
           <div class="col-sm-4">
             <h2 class="get-started card-title mb-4 text-center">Bill Templates</h2>
            <div>
-             <img class="card-img-top" src="{% static 'homepage/assets/Images/Invoice2-1.png' %}" style="height: 320px;" alt="Card image cap">
+             <img class="card-img-top shad" src="{% static 'imgs/Invoice2-1.png' %}" style="height: 320px;" alt="Card image cap">
              <div class="card-body text-center">
                <p class="card-text">You can download or modify a bill template</p>
                <a href="#" class="btn learn-more-btn">Download</a>
@@ -170,7 +176,7 @@
         <h2 class="get-started card-title mb-4 text-center">Are You A Financial<br>
            Team Lead?</h2>
         <div>
-          <img class="card-img-top" src="{% static 'homepage/assets/Images/team.jpg' %}" alt="Card image cap">
+          <img class="card-img-top" src="{% static 'imgs/team.jpg' %}" style="height: 360px;" alt="Card image cap">
           <div class="card-body text-center">
             <p class="card-text">Your team relies on you, so you need accounting software that lets you focus your attention on what matters most. With INVATOR invoice, you’ll save valuable time that you can spend creating invoice for your business.</p>
             <a href="#" class="btn learn-more-btn">Learn More</a>
@@ -181,7 +187,7 @@
         
         <h2 class="get-started card-title mb-4 text-center">Are You A <br>Freelancer?</h2>
         <div class="card-v">
-          <img class="card-img-top" src="{% static 'homepage/assets/Images/selfemplyed.jpg' %}" style="height: 360px;" alt="Card image cap">
+          <img class="card-img-top" src="{% static 'imgs/selfemplyed.jpg' %}" style="height: 360px;" alt="Card image cap">
           <div class="card-body text-center">
             <p class="card-text">Stop wasting precious time creating invoices, following up on payments and trying to figure out where your business stands. INVATOR invoice makes invoicing painless and easy</p>
             <a href="#" class="btn learn-more-btn">Learn More</a>
@@ -207,7 +213,7 @@
                           </div>
                               <!-- /.col-sm-6 -->
                               <div class="col-md-6">
-                                <img src="{% static 'homepage/assets/Images/all devicess.jpg' %}" style="width: 100%;" alt="">
+                                <img src="{% static 'imgs/all devicess.jpg' %}" style="width: 100%;" alt="">
                               </div>
                               <!-- /.col-sm-6 -->
                             </div>
@@ -221,9 +227,10 @@
 
 
 
-                        <!-- Testimoney section-->
+                        <!-- Testimony section-->
+                        <div class="jumbotron">
                         <div class="container mt-5">
-                          <h1 class="get-started text-center">What Freelancer Are Saying</h1>
+                          <h1 class="text-center">What Freelancer Are Saying</h1>
                         </div>
 
                             <div id="carouselExampleIndicators" class="carousel slide container show-bottom" data-ride="carousel">
@@ -232,9 +239,9 @@
 
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
-                                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><img src="{% static 'homepage/assets/Images/small-images.jpg' %}" alt="..."></li>
-                                  <li data-target="#carousel-example-generic" data-slide-to="1"><img src="{% static 'homepage/assets/Images/Ellipse 12.png' %}" alt="..."></li>
-                                  <li data-target="#carousel-example-generic" data-slide-to="2"><img src="{% static 'homepage/assets/Images/Ellipse 14.png' %}" alt="..."></li>
+                                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><img src="{% static 'imgs/small-images.jpg' %}" alt="..."></li>
+                                  <li data-target="#carousel-example-generic" data-slide-to="1"><img src="{% static 'imgs/Ellipse 12.png' %}" alt="..."></li>
+                                  <li data-target="#carousel-example-generic" data-slide-to="2"><img src="{% static 'imgs/Ellipse 14.png' %}" alt="..."></li>
                                 </ol>
                                  <!-- Indicators End -->
                 
@@ -278,7 +285,7 @@
                               </a>
                             </div>
                           </div>
-                          
+                          </div>
     
                             <!-- Testimonies End-->
     
@@ -290,7 +297,7 @@
                             <div class="container mt-1">
                               <div class="row">
                                 <div class="col-md-6">
-                                  <img src="{% static 'homepage/assets/Images/team successs.jpg' %}" style="width: 100%;" alt="">
+                                  <img src="{% static 'imgs/team successs.jpg' %}" style="width: 100%;" alt="">
                                 </div>
                                 <!-- /.col-sm-6 -->
                                 <div class="col-md-6 p-3">
@@ -338,9 +345,9 @@
        <div class="col-md-4 d-flex justify-content-center">
          <!--<div class="p-2"> <a href="#"><img src="./assets/Images/download-google-play.svg"></a></div>
          <div class="p-2"> <a href="#"><img src="./assets/Images/download-google-play.svg"></a></div>-->
-         <div class="p-2"><a href="#"><img src="{% static 'homepage/assets/Images/Vector (27).png' %}"></a></div>
-         <div class="p-2"><a href="#"><img src="{% static 'homepage/assets/Images/Vector (26).png' %}"></a></div>
-         <div class="p-2"><a href="#"><img src="{% static 'homepage/assets/Images/Vector (25).png' %}"></a></div>
+         <div class="p-2"><a href="#"><img src="{% static 'imgs/Vector (27).png' %}"></a></div>
+         <div class="p-2"><a href="#"><img src="{% static 'imgs/Vector (26).png' %}"></a></div>
+         <div class="p-2"><a href="#"><img src="{% static 'imgs/Vector (25).png' %}"></a></div>
        </div>
      </div>
    </div>
