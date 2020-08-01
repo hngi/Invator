@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 #import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
@@ -106,7 +106,8 @@ def dashboard(request):
         print(li)
         context = {"list":li}
         # only show 4 invoices at a time
-        context = order_invoice[:4]
+       
+        context = order_invoice[:6]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
