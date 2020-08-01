@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 #import weasyprint
 from django.template.loader import render_to_string
-#from weasyprint import HTML
+from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
@@ -106,8 +106,7 @@ def dashboard(request):
         print(li)
         context = {"list":li}
         # only show 4 invoices at a time
-       
-        context = order_invoice[:6]
+        context = order_invoice[:4]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
@@ -169,6 +168,9 @@ def invoice(request):
                     to_email=to_email,tax=tax )
 
             xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
+            data = xo.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
+            vat = int(data["sum"]) * float(xo.tax) / 100
+            total = int(data["sum"]) + vat
             context = {"obj":xo, "sum":data["sum"],"vat":vat, "total":total}
             return render(request, "preview_template_1.html", context)
         return redirect('login')
