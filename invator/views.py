@@ -177,22 +177,25 @@ def invoice(request):
             #if int(tax) > 0:
              #   percent = int(total) * (int(tax)/100)
             #    total = total + percent
-                xo = Invoice.objects.create(user=user,
-                    to_phone=to_phone, from_web_address=from_address,
-                    to_address=to_address, account_number=account_number,
-                    from_full_name=from_full_name, from_phone=from_phone,
-                    to_full_name=to_full_name, from_email=from_email,
-                    to_email=to_email,tax=tax, title=title )
+            xo = Invoice.objects.create(user=user,
+                to_phone=to_phone, from_web_address=from_address,
+                to_address=to_address, account_number=account_number,
+                from_full_name=from_full_name, from_phone=from_phone,
+                to_full_name=to_full_name, from_email=from_email,
+                to_email=to_email,tax=tax, title=title )
 
+            # xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
+            
             for pric, quantit, ite in zip(price, quantity, item):
+                print(pric, quantit)
                 xo.transactions.create(price=pric, item=ite, quantity=quantit,
                                        total=int(pric)*int(quantit))
-            return redirect('invator:dashboard')
+            data = xo.transactions.aggregate(sum = Sum('total'))
+            vat = int(data["sum"]) * float(xo.tax) / 100
+            total = int(data["sum"]) + vat
+            context = {"obj":xo, "sum":data["sum"],"vat":vat, "total":total}
+            return render(request, "preview_template_1.html", context)
         return redirect('login')
-    # else:
-    #     if request.user.is_authenticated:
-    #         count = Invoice.objects.filter(user=request.user).last().id + 1
-    #         return render(request, "invoice-gen.html", {"count":count})
     return render(request, "invoice-gen.html")
 
             #xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
