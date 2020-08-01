@@ -171,7 +171,7 @@ Invoice.prototype = {
      * @returns {number}
      */
     newRow: function() {
-        jQuery(".item-row:last").after('<tr class="item-row"><td class="item-name"><div class="delete-btn"><input name="item" type="text" class="form-control item" placeholder="Item" type="text"><a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a></div></td><td><input class="form-control price" name="price" placeholder="Price" type="text"> </td><td><input class="form-control qty" name="quantity" placeholder="0" type="text"></td><td><span class="total">0.00</span></td></tr>');
+        jQuery(".item-row:last").after('<tr class="item-row"><td class="item-name"><div class="delete-btn"><input name="item" type="text" class="form-control item" placeholder="Item" type="text"><a class=' + $.opt.delete.substring(1) + ' href="javascript:;" title="Remove row">X</a></div></td><td><input class="form-control price" name="price" placeholder="0" type="number"> </td><td><input class="form-control qty" name="quantity" placeholder="0" type="number"></td><td><span class="total">0.00</span></td></tr>');
 
         if (jQuery($.opt.delete).length > 0) {
             jQuery($.opt.delete).show();
