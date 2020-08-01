@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 #import weasyprint
 from django.template.loader import render_to_string
-#from weasyprint import HTML
+from weasyprint import HTML
+from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User, auth
@@ -48,13 +49,13 @@ def download_to_pdf(request, id):
     print(vat)
     total = int(data["sum"]) + vat
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
-    html_string = render_to_string('invoice/02.html', context)
+    html_string = render_to_string('02.html', context)
     html = HTML(string=html_string,
     base_url=request.build_absolute_uri())
     result = html.write_pdf()
 
     # Creating http response
-    response = HttpResponse(result, content_type='application/pdf')
+    response = HttpResponse(result , content_type="application/pdf")
     filename = "Invoice_%s.pdf" %(datetime.now())
     content = "inline; filename='%s'" %(filename)
     content = "attachment; filename='%s'" %(filename)
@@ -69,8 +70,11 @@ def preview_template(request, id):
     print(data, obj.tax)
     vat = int(data["sum"]) * float(obj.tax) / 100
     print(vat)
+    count = Invoice.objects.filter(user=request.user).last().id + 1
+    print(count)
+    # count = obj_.id
     total = int(data["sum"]) + vat
-    context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total}
+    context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total, "count":count}
     return render(request, "preview_template_1.html", context)
 
 def searchbar(request):
@@ -119,29 +123,31 @@ def dashboard(request):
 
     return redirect("/login")
 
+
 def invoice(request):
-    if request.user.is_authenticated:
-        if request.method == "POST":
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            print(request.POST)
             user = request.user
             #role = request.POST["title"]
-            brand_name = request.POST["brand_name"]
+            # brand_name = request.POST["brand_name"]
             tax = request.POST["tax"]
             item = request.POST["item"]
             price = request.POST["price"]
             quantity = request.POST["quantity"]
             #total = request.POST["total"] or None
-            to_full_name = request.POST["to_full_name"]
+            to_full_name = request.POST["to_name"]
             #bank_name = request.POST["bank_name"]
             to_address = request.POST["to_address"]
             #account_name = request.POST["account_name"]
             account_number = request.POST["account_number"]
             from_phone = request.POST["from_phone"]
-            from_full_name = request.POST["brand_name"]
+            from_full_name = request.POST["from_full_name"]
             from_address = request.POST["from_address"]
             to_phone = request.POST["to_phone"]
             to_email = request.POST["to_email"]
             from_email = request.POST["from_email"]
-
+            print(request.POST)
             #tran = Transaction.objects.create(price=price, item=item, quantity=quantity, total=1)
             xo = Invoice.objects.create(user=user, to_phone=to_phone,
                     to_address=to_address, account_number=account_number,
@@ -150,8 +156,13 @@ def invoice(request):
                     to_email=to_email,tax=tax )
 
             xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
-
             return render(request, "dashboard.html")
-    return render(request, "invoice-gen.html")
+        return redirect('login')
+    else:
+        if request.user.is_authenticated:
+            count = Invoice.objects.filter(user=request.user).last().id + 1
+            return render(request, "invoice-gen.html", {"count":count})
+        return render(request, "invoice-gen.html")
+
 
 

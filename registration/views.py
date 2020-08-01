@@ -84,4 +84,4 @@ def dashboard(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect("/dashboard")
+    return redirect("/login")
