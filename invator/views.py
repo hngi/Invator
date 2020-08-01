@@ -28,9 +28,9 @@ def contact_page(request):
                     message_email,
                     ["believemanasseh@gmail.com"],
             )
-            
+
             return render(request, "contact.html", {"contact_form": form})
-    
+
 def homepage(request):
     return render(request, 'index.html')
 
@@ -148,7 +148,6 @@ def invoice(request):
             xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
 
             return render(request, "dashboard.html")
-        return render(request, "invoice-gen.html")
-    return redirect("/login")
+    return render(request, "invoice-gen.html")
 
 
