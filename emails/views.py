@@ -30,7 +30,7 @@ def email_invoice(request):
 				#sg.send(mail.send())
 			except BadHeaderError:
 				return HttpResponse("Invalid header found!")
-			return render(request, "")
+			return render(request, "email-invoice.html", {"form": form})
 	return render(request, "email-invoice.html", {'form': form})
 
 
