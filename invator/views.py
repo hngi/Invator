@@ -194,13 +194,8 @@ def invoice(request):
             vat = int(data["sum"]) * float(xo.tax) / 100
             total = int(data["sum"]) + vat
             context = {"obj":xo, "sum":data["sum"],"vat":vat, "total":total}
-            # context = {"obj":xo}
             return render(request, "preview_template_1.html", context)
         return redirect('login')
-    # else:
-    #     if request.user.is_authenticated:
-    #         count = Invoice.objects.filter(user=request.user).last().id + 1
-    #         return render(request, "invoice-gen.html", {"count":count})
     return render(request, "invoice-gen.html")
 
             #xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
