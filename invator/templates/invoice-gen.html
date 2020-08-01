@@ -29,9 +29,15 @@
                         <li class="nav-item"><a href="{% url 'invator:dashboard' %}" class="nav-link font-weight-bold">Dashboard</a></li>
                     </ul>
                     <div class="center">
- 
+                            
+                            {% if user.is_authenticated %}
+                                
+                            {% else %}
+                                
+                            
+                                
                         <a href="{% url 'register' %}"><button type="button" class="btn btn-primary btn-md px-4 ml-4 mt-2">SIGN UP</button></a>
- 
+                        {% endif %}
  
                     </div>
  
