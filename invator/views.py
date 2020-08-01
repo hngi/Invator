@@ -101,6 +101,8 @@ def dashboard(request):
         for i in order_invoice:
             data = i.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
             print(data["sum"])
+            if i.tax == "":
+                i.tax = 0
             vat = int(data["sum"]) * float(i.tax) / 100
             print(vat)
             total = int(data["sum"]) + vat
