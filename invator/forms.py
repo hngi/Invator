@@ -2,17 +2,29 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class ContactForm(forms.Form):
-	name = forms.CharField()
-	email = forms.EmailField()
-	message = forms.CharField(
-					widget=forms.Textarea(
+	name = forms.CharField(label="Your Name:", max_length=254,
+					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter your message...',
-						'class': 'form-control',
-						'rows': 50,
-						'cols': 70,
+						'placeholder': 'Your name',
+						'class': 'form-control contact-input',
+					}))
+	email = forms.EmailField(label="Your Email:", max_length=254,
+					widget=forms.TextInput(
+					attrs={
+						'placeholder': 'Your email address',
+						'class': 'form-control contact-input',
 					})
 				)
+	message = forms.CharField(label="Your Message:", max_length=2000,
+					widget=forms.Textarea(
+					attrs={
+						'placeholder': 'Your message',
+						'class': 'form-control contact-msg',
+						'rows': 10,
+						'cols': 50,
+					})
+				)
+
 
 	def clean_email(self, *args, **kwargs):
 		email = self.cleaned_data.get("email")
