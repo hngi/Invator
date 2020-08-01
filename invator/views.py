@@ -4,6 +4,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
+import json
 from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User, auth
 from .models import Invoice, Transaction
@@ -216,5 +217,18 @@ def invoice(request):
          #   except AttributeError:
          #       return render(request, "invoice-gen.html")
         #return render(request, "invoice-gen.html")
+
+def invoice_data(request):
+    if request.method == "POST":
+        s_data = request.POST.get('json_data')
+        data_dict = json.loads(s_data)
+        # print(data_dict['data'])
+        invoice_data = []
+        for i in data_dict['data']:
+            values = {i['name'] : i['value']}
+            invoice_data.append(values)
+        print(invoice_data)
+        return JsonResponse(invoice_data, safe=False)
+
 
 
