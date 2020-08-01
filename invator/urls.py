@@ -4,14 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-<<<<<<< HEAD
-=======
     path('', views.homepage, name="homepage"),
->>>>>>> ce6b54b86455decb705a1fa19dd954f06473f6f7
     path('invoice/', views.invoice, name="invoice"),
     path('searchbar/', views.searchbar, name='searchbar'),
     path('dashboard/', views.dashboard, name="dashboard"),
     path('preview/<str:id>', views.preview_template, name="preview_template"),
-    path('<str:id>/', views.download_to_pdf, name="download_to_pdf"),
+    path('download/<str:id>/', views.download_to_pdf, name="download_to_pdf"),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

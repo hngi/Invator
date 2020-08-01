@@ -42,7 +42,7 @@
 
     <!--  -->
     <section class="mt-7">
-        <form method="POST">
+        <form method="POST" action='{% url "preview_template" %}'>
             {% csrf_token %}
             <div class="container pt-3">
                 <a class="btn btn-actions">
