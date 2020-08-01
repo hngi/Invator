@@ -164,25 +164,35 @@ def invoice(request):
             from_address = request.POST["from_address"]
             to_phone = request.POST["to_phone"]
             to_email = request.POST["to_email"]
+            print(item)
             from_email = request.POST["from_email"]
-            #total = 0
+           #total = 0
             #for x, y in zip(price, quantity):
              #   total = int(x) * int(y) + int(total)
             #tran = Transaction.objects.create(price=price, item=item, quantity=quantity, total=1)
             if tax == '':
                 tax = 0
-            xo = Invoice.objects.create(user=user,
-                    to_phone=to_phone,from_web_address=from_address,
+            #    total = int(x) * int(y) + int(total)
+
+            #if int(tax) > 0:
+             #   percent = int(total) * (int(tax)/100)
+            #    total = total + percent
+                xo = Invoice.objects.create(user=user,
+                    to_phone=to_phone, from_web_address=from_address,
                     to_address=to_address, account_number=account_number,
                     from_full_name=from_full_name, from_phone=from_phone,
                     to_full_name=to_full_name, from_email=from_email,
-                    to_email=to_email,tax=tax,title=title
-                    )
+                    to_email=to_email,tax=tax, title=title )
 
             for pric, quantit, ite in zip(price, quantity, item):
-                xo.transactions.create(price=pric,
-                                       item=ite, quantity=quantit, total=int(pric)*int(quantit))
-            return redirect("invator:dashboard")
+                xo.transactions.create(price=pric, item=ite, quantity=quantit,
+                                       total=int(pric)*int(quantit))
+            return redirect('invator:dashboard')
+        return redirect('login')
+    # else:
+    #     if request.user.is_authenticated:
+    #         count = Invoice.objects.filter(user=request.user).last().id + 1
+    #         return render(request, "invoice-gen.html", {"count":count})
     return render(request, "invoice-gen.html")
 
             #xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
