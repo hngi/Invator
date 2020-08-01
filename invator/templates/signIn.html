@@ -1,5 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+{% load static %}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,7 +21,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light">
       <div>
-        <a href="index.html" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="img/Group 124 (2).png" alt=""></a>
+        <a href="{% url 'invator:homepage' %}" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="img/Group 124 (2).png" alt=""></a>
    </div>
       <button
         type="button"
@@ -59,7 +60,7 @@
                   <small class="form-text text-muted">Don't have an account yet?</small>
                   <small id="sign-up" class="form-text text-muted"><a href="signup.html">Sign up</a></small>
                 </div>            
-            </form>       
+            </form>      
         </div>
     </div>
     

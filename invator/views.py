@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-#import weasyprint
+import weasyprint
 from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
@@ -94,6 +94,7 @@ def dashboard(request):
         auth_invoice = Invoice.objects.filter(user=user)
         # show the latest invoices
         order_invoice = auth_invoice.order_by("-time")
+        '''
         li = []
         for i in order_invoice:
             data = i.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
@@ -105,6 +106,7 @@ def dashboard(request):
         list_of_total = li
         print(li)
         context = {"list":li}
+        '''
         # only show 4 invoices at a time
         context = order_invoice[:4]
         if request.method == "POST":
