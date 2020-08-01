@@ -29,9 +29,9 @@ def contact_page(request):
                     message_email,
                     ["believemanasseh@gmail.com"],
             )
-            
+
             return render(request, "contact.html", {"contact_form": form})
-    
+
 def homepage(request):
     return render(request, 'index.html')
 
