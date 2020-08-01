@@ -94,6 +94,7 @@ def dashboard(request):
         auth_invoice = Invoice.objects.filter(user=user)
         # show the latest invoices
         order_invoice = auth_invoice.order_by("-time")
+        # if saved properly this will show a list of sums
         li = []
         for i in order_invoice:
             data = i.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
@@ -106,7 +107,7 @@ def dashboard(request):
         print(li)
         context = {"list":li}
         # only show 4 invoices at a time
-        context = order_invoice[:4]
+        context = order_invoice[:6]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
