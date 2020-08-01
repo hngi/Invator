@@ -51,7 +51,7 @@
 
    <div class="container  p-3 px-md-4 mb-3 navbar navbar-light  navbar-expand-lg  navbar-css  brand-logo">
 
-    <a href="{% url 'homepage' %}" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="{% static 'img/Group 124 (2).png' %}" alt=""></a>
+    <a href="{% url 'invator:homepage' %}" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="{% static 'img/Group 124 (2).png' %}" alt=""></a>
     <button
       type="button"
       class="navbar-toggler"
@@ -65,11 +65,11 @@
 
     <div class="collapse navbar-collapse" id="myNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item nav-item-css"><a href="{% url 'homepage' %}" class="nav-link nav-link-css">Home</a></li>
-        <li class="nav-item nav-item-css"><a href="{% url 'invoice' %}" class="nav-link nav-link-css">Invoices</a>
+        <li class="nav-item nav-item-css"><a href="{% url 'invator:homepage' %}" class="nav-link nav-link-css">Home</a></li>
+        <li class="nav-item nav-item-css"><a href="{% url 'invator:invoice' %}" class="nav-link nav-link-css">Invoices</a>
         </li>
         <li class="nav-item nav-item-css">
-          <a href="{% url 'dashboard' %}" class="nav-link nav-link-css">Dashboard</a>
+          <a href="{% url 'invator:dashboard' %}" class="nav-link nav-link-css">Dashboard</a>
         </li>
       </ul>
     </div>

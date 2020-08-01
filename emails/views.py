@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 #from root.settings import SENDGRID_API_KEY
 from django.conf import settings
 from .models import Emails
+from django.contrib import messages
 from .forms import EmailsForm
 
 #@login_required
@@ -15,23 +16,21 @@ def email_invoice(request):
 	if request.method == "POST":
 		form = EmailsForm(request.POST, request.FILES)
 		if form.is_valid():
-			print("Form works!")
 			subject = f'Message from {form.cleaned_data["name"]}'
 			message = form.cleaned_data["message"]
-			sender = form.cleaned_data["sender"]
+			sender = settings.DEFAULT_FROM_EMAIL
 			recipient = form.cleaned_data["recipient"]
-			files = request.FILES.getlist("attach")
+			file = request.FILES["attach"]
 			try:
 				mail = EmailMessage(subject, message, sender, [recipient])
-				for f in files:
-					mail.attach(f.name, f.read(), f.content_type)
+				mail.attach(file.name, file.read(), file.content_type)
 				mail.send()
-				#sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
-				#sg.send(mail.send())
-			except BadHeaderError:
-				return HttpResponse("Invalid header found!")
+				messages.success(request, 'Invoice sent successfully!')
+			except:
+				messages.error(request, 'Invoice not sent!')
+		
 			return render(request, "email-invoice.html", {"form": form})
-	return render(request, "email-invoice.html", {'form': form})
+	return render(request, "email-invoice.html", {"form": form})
 
 
 
