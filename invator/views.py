@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 #import weasyprint
 from django.template.loader import render_to_string
-#from weasyprint import HTML
+from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
@@ -94,9 +94,19 @@ def dashboard(request):
         auth_invoice = Invoice.objects.filter(user=user)
         # show the latest invoices
         order_invoice = auth_invoice.order_by("-time")
+        li = []
+        for i in order_invoice:
+            data = i.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
+            print(data["sum"])
+            vat = int(data["sum"]) * float(i.tax) / 100
+            print(vat)
+            total = int(data["sum"]) + vat
+            li.append(total)
+        list_of_total = li
+        print(li)
+        context = {"list":li}
         # only show 4 invoices at a time
-       
-        context = order_invoice[:6]
+        context = order_invoice[:4]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
@@ -131,6 +141,7 @@ def invoice(request):
             print(request.POST)
             user = request.user
             #role = request.POST["title"]
+            print(request.POST)
             # brand_name = request.POST["brand_name"]
             tax = request.POST["tax"]
             item = request.POST["item"]
@@ -150,21 +161,27 @@ def invoice(request):
             from_email = request.POST["from_email"]
             print(request.POST)
             #tran = Transaction.objects.create(price=price, item=item, quantity=quantity, total=1)
-            xo = Invoice.objects.create(user=user, to_phone=to_phone,
+            xo = Invoice.objects.create(user=user, to_phone=to_phone,from_web_address=from_address,
                     to_address=to_address, account_number=account_number,
                     from_full_name=from_full_name, from_phone=from_phone,
                     to_full_name=to_full_name, from_email=from_email,
                     to_email=to_email,tax=tax )
 
-            xo.transactions.create(price=price, item=item, quantity=quantity, total=int(price)*int(quantity))
-
-            return render(request, "dashboard.html")
+            xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
+            data = xo.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
+            vat = int(data["sum"]) * float(xo.tax) / 100
+            total = int(data["sum"]) + vat
+            context = {"obj":xo, "sum":data["sum"],"vat":vat, "total":total}
+            return render(request, "preview_template_1.html", context)
         return redirect('login')
-    # else:
-    #     if request.user.is_authenticated:
-    #         count = Invoice.objects.filter(user=request.user).last().id + 1
-    #         return render(request, "invoice-gen.html", {"count":count})
-    return render(request, "invoice-gen.html")
+    else:
+        if request.user.is_authenticated:
+            try:
+                count = Invoice.objects.filter(user=request.user).last().id + 1
+                return render(request, "invoice-gen.html", {"count":count})
+            except AttributeError:
+                return render(request, "invoice-gen.html")
+        return render(request, "invoice-gen.html")
 
 
 
