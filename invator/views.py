@@ -8,12 +8,13 @@ import json
 from django.http import Http404, HttpResponse, JsonResponse
 from django.contrib.auth.models import User, auth
 from .models import Invoice, Transaction
-from django.db.models import Sum, F
+from django.db.models import Sum, F, Q
 from datetime import datetime
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib import messages
 from .forms import ContactForm
 from django.contrib.auth import get_user_model
+from django.views.generic import ListView
 User = get_user_model()
 
 def contact_page(request):
@@ -80,11 +81,21 @@ def preview_template(request, id):
     context = {"obj":obj, "sum":data["sum"],"vat":vat, "total":total, "count":count}
     return render(request, "preview_template_1.html", context)
 
-def searchbar(request):
-    if request.method == 'GET':
-        search = request.GET.get('search')
-        post = Invoice.objects.all().filter(id=search)
-        return render(request, 'searchbar.html', {'post': post})
+class InvoiceSearch(ListView):
+    model = Invoice
+    template_name = 'searchbar.html'
+    def get_queryset(self):
+        return super(InvoiceSearch, self).get_queryset()
+
+        query=self.request.Get.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_, (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_, (Q(role__icontains=q) for q in query_list))
+            )
+        return result
+    
 
 def dashboard(request):
     '''views for the dashboard template'''
