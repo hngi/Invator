@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href=" {% static 'asset/bootstrap-4.5.0-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'assets/bootstrap-4.5.0-dist/css/bootstrap.min.css' %}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'asset/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/font-awesome-4.7.0/css/font-awesome.min.css' %}">
 
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{% static 'asset/ionicons-2.0.1/css/ionicons.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'assets/ionicons-2.0.1/css/ionicons.min.css' %} ">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{% static 'asset/css/dashboardstyle.css' %}">
-    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
 
     <title>Invator</title>
 </head>
@@ -68,9 +68,7 @@
                                             {{user.profile.job_type}}
                                         </div>
                                         {% endif %}
-                                        <div class="invoice-number">
-                                            120 invoices created
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +105,7 @@
                                     <h3>Dashboard</h3>
                                     <input type="text" class="form-control search" placeholder="search">
                                 </div>
-                                <div class="row second-row">
+                           <!--     <div class="row second-row">
                                     <div class="col-md-3">
                                         <div class="d-flex filter filter-paid">
                                             <div class="div-icon">
@@ -152,7 +150,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="row third-row d-flex justify-content-between">
                                     <h4>Recent Invoice</h4>
                                     <div class="invoice-icons">
@@ -163,17 +161,17 @@
                                 <div class="table table-responsive table-striped">
                                     <table class="lw-tab-table">
                                         <tr class="lw-table-row-1">
-                                            <th>Clients</th>
+                                            <th>Invoice ID</th>
                                             <th>Date</th>
                                             <th>Amount</th>
-                                            <th>Status</th>
+                                           <th>Status</th>
                                             <th></th>
                                         </tr>
                                         {% for data in data %}
                                         <tr>
                                             <td class="lw-table-data-1">
                            <div class="d-flex">
-                                                    <div class="user-pic">pix</div>
+                                                   
                                                     <div class="details">
                                                         {{user.to_full_name}}
                                                         <div class="invoice-id">0000{{data.pk}}</div>
@@ -188,17 +186,17 @@
                                             <td class="lw-table-data-3">
                                                 {{data.grand_total}}$
                                             </td>
-                                            <td class="lw-table-data-2">
+                                          <!--  <td class="lw-table-data-2">
                                                 <button class="unpaid">Unpaid</button>
-                                            </td>
-                                            <td class="lw-table-data-2">
+                                            </td>-->
+                                      <!--      <td class="lw-table-data-2">
                                                 ...
                                             </td> 
                                             
                                        
                                             <td class="lw-table-data-2">
                                                 view
-                                            </td>
+                                            </td>-->
                                             {% endfor %}
                                       
                                     </table>
@@ -237,7 +235,7 @@
                                 <label for="fullname">Full Name: </label>
                                 <input name = "fullname" type="text" class="form-control input" value={{ user.first_name}} id = "fullname"><br>
                                 <label for="username">Username: </label>
-                                <input name = "username" id = "username" type="text" class="form-control input" value={{ user.username}}><br>
+                                <input name = "username" id = "username" type="text" class="form-control input" value={{ user.username}} readonly><br>
                                 <label for="password">Password: </label>
                                 <input  name = "password" id = "password" type="password" class="form-control input" value=><br>
                                 <label  for="email">Email: </label>
@@ -262,13 +260,13 @@
 
     <!-- Scripts -->
 
-    <script src="{% static '/asset/bootstrap-4.5.0-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/assets/bootstrap-4.5.0-dist/js/bootstrap.min.js' %}"></script>
     <!-- jQuery -->
-    <script src="{% static 'asset/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <!-- Popper -->
-    <script src="{% static 'asset/js/popper.min.js' %}"></script>
-    <script src="{% static '/asset/js/slick.min.js' %}"></script>
-    <script src="{% static '/asset/js/jquery.nice-select.js' %}."></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static '/assets/js/slick.min.js' %}"></script>
+    <script src="{% static '/assets/js/jquery.nice-select.js' %}."></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
