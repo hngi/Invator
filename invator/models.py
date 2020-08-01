@@ -50,7 +50,7 @@ class Invoice(models.Model):
     from_email = models.EmailField(max_length=20, null=True, blank=True)
     transactions = models.ManyToManyField(Transaction)
     date_created = models.DateField(auto_now_add=True)
-    # grand_total = models.IntegerField(null=True, blank=True)
+    grand_total = models.IntegerField(null=True, blank=True)
     # just for tracking recents
     time = models.DateTimeField(auto_now_add=True)
 
