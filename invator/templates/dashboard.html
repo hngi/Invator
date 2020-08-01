@@ -174,7 +174,7 @@
                                                    
                                                     <div class="details">
                                                         {{user.to_full_name}}
-                                                        <div class="invoice-id">0000{{data.pk}}</div>
+                                                        <div class="invoice-id">{{data.pk|stringformat:"05d" }}</div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -184,7 +184,7 @@
                                             </td>
                                            
                                             <td class="lw-table-data-3">
-                                                {{data.grand_total}}$
+                                                ${{data.total}}
                                             </td>
                                           <!--  <td class="lw-table-data-2">
                                                 <button class="unpaid">Unpaid</button>
