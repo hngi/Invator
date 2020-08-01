@@ -37,12 +37,7 @@ $(document).ready(function(){
 })
 $(document).ready(function(){
     $('.color-changer').on('click', function(){
-        $('.card-body').toggleClass("switch")
-    })
-})
-$(document).ready(function(){
-    $('.color-changer').on('click', function(){
-        $('.burger span').toggleClass("switch")
+        $('.nav-toggle span').toggleClass("switch")
     })
 })
 
@@ -57,3 +52,5 @@ changeColor.addEventListener('click',() => {
         changeColor.innerHTML = "Dark"
     }
 })
+
+
