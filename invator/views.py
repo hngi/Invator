@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-#import weasyprint
+import weasyprint
 from django.template.loader import render_to_string
-#from weasyprint import HTML
+from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
