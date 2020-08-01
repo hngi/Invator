@@ -1,0 +1,70 @@
+        .navbar {
+            transition: all 0.4s;
+        }
+        
+        .navbar .nav-link {
+            color: #000000;
+        }
+        
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: #0074D9;
+            text-decoration: none;
+        }
+        
+        .navbar .navbar-brand {
+            color: #0074D9;
+        }
+        
+        .navbar-toggler {
+            color: #0074D9;
+            border-color: #fff !important;
+        }
+        
+        .nav-item,
+        .btn.btn-primary.btn-md.px-4 {
+            font-size: 14px;
+        }
+        /* Change navbar styling on scroll */
+        
+        .navbar.active {
+            color: #0074D9;
+            background: #fff;
+            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.active .nav-link {
+            color: #555;
+        }
+        
+        .navbar.active .nav-link:hover,
+        .navbar.active .nav-link:focus {
+            color: #555;
+            text-decoration: none;
+        }
+        
+        .navbar.active .navbar-brand {
+            color: #0074D9;
+        }
+        /* Change navbar styling on small viewports */
+        
+        @media (max-width: 991.98px) {
+            .navbar {
+                background: #fff;
+            }
+            .navbar .navbar-brand,
+            .navbar .nav-link {
+                color: #000;
+                text-align: left;
+            }
+            .center {
+                text-align: center;
+            }
+            .nav-link {
+                display: block;
+                padding: .7rem .7rem;
+            }
+            .text-small {
+                font-size: 0.9rem !important;
+            }
+        }
