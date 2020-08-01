@@ -96,7 +96,7 @@ def dashboard(request):
         auth_invoice = Invoice.objects.filter(user=user)
         # show the latest invoices
         order_invoice = auth_invoice.order_by("-time")
-        '''
+        
         li = []
         for i in order_invoice:
             data = i.transactions.aggregate(sum = Sum(F('quantity') * F('price')))
@@ -104,13 +104,14 @@ def dashboard(request):
             vat = int(data["sum"]) * float(i.tax) / 100
             print(vat)
             total = int(data["sum"]) + vat
+            i.total = total
             li.append(total)
-        list_of_total = li
         print(li)
-        context = {"list":li}
-        '''
+        
+        
         # only show 4 invoices at a time
         context = order_invoice[:6]
+        
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
@@ -134,7 +135,7 @@ def dashboard(request):
                 userp = User.objects.get(email=email)
                 userp.profile.job_type = job_type
                 userp.save()
-        return render(request, "dashboard.html", {'data': context})
+        return render(request, "dashboard.html", {'data': context, "sums":li})
 
     return redirect("/login")
 
