@@ -164,6 +164,8 @@ def invoice(request):
             from_email = request.POST["from_email"]
             print(request.POST)
             #tran = Transaction.objects.create(price=price, item=item, quantity=quantity, total=1)
+            if tax == '':
+                tax = 0
             xo = Invoice.objects.create(user=user, to_phone=to_phone,from_web_address=from_address,
                     to_address=to_address, account_number=account_number,
                     from_full_name=from_full_name, from_phone=from_phone,
