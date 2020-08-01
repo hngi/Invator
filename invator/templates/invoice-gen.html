@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'invoice-style.css' %}">
-    <link rel="stylesheet" href="{% static 'main-nav.css' %}">
+    <link rel="stylesheet" href="{% static 'invoice-nav.css' %}">
 
 </head>
 
@@ -21,20 +20,18 @@
     <header class="header ">
         <nav class="navbar navbar-expand-lg fixed-top py-3 ">
             <div class="container">
-                <a href="#" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="{% static 'img/Group 124 (2).png' %}" alt=""></a>
+                <a href="#" class="navbar-brand deafult font-weight-bold"><img style="height: 40px;" src="img/Group 124 (2).png" alt=""></a>
                 <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
 
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="{% url 'homepage' %}" class="nav-link font-weight-bold">HOME <span class="sr-only">(current)</span></a></li>
-                        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link font-weight-bold">LOGIN</a></li>
-                        <li class="nav-item"><a href="{% url 'register' %}" class="nav-link  font-weight-bold">REGISTER</a></li>
-                        <!-- <li class="nav-item"><a href="#" class="nav-link font-weight-bold">CONTACT</a></li> -->
+                        <li class="nav-item active"><a href="#" class="nav-link font-weight-bold">HOME <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link font-weight-bold">FEATURES</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link  font-weight-bold">PRICE</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link font-weight-bold">CONTACT</a></li>
                     </ul>
                     <div class="center">
-
-                        <a href="../register"><button type="button" class="btn btn-primary btn-md px-4 ml-4 mt-2">SIGN UP</button></a>
-
+                        <button type="button" class="btn btn-primary btn-md px-4 ml-4 mt-2">SIGN UP</button>
 
                     </div>
 
@@ -83,22 +80,22 @@
                                 <div class="pt-2 form-group">
                                     <label for="exampleFormControlFile1">Name</label>
 
-                                    <input name="brand_name" type="text" class="form-control" placeholder="Business Name" minlength="6" required>
+                                    <input type="text" name="from_full_name" class="form-control" placeholder="Business Name" minlength="6" required>
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Email</label>
 
-                                    <input name="from_email" type="text" class="form-control" placeholder="name@business.com" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                    <input type="text" name="from_email" class="form-control" placeholder="name@business.com">
                                 </div>
                                 <div class=" form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Address</label>
 
-                                    <input name="from_address" type="text " class="form-control " placeholder="Street ">
+                                    <input type="text" name="from_address" class="form-control " placeholder="Street ">
                                 </div>
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Phone</label>
 
-                                    <input name="from_phone" type="text " class="form-control " placeholder="(123) 454-4543 ">
+                                    <input type="text" name="from_phone" class="form-control " placeholder="(123) 454-4543 ">
                                 </div>
                             </div>
                         </div>
@@ -108,22 +105,22 @@
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Name</label>
 
-                                    <input name="to_full_name" type="text " class="form-control " placeholder="Client Name " minlength="6" required>
+                                    <input type="text " name="to_name" class="form-control " placeholder="Client Name " minlength="6" required>
                                 </div>
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Email</label>
 
-                                    <input name="to_email" type="text " class="form-control " placeholder="name@business.com " required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                    <input type="text " name="to_email" class="form-control " placeholder="name@business.com ">
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Address</label>
 
-                                    <input name="to_address" type="text" class="form-control" placeholder="Street">
+                                    <input type="text" name="to_address" class="form-control" placeholder="Street">
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Phone</label>
 
-                                    <input name="to_phone" type="text" class="form-control" placeholder="(123) 454-4543">
+                                    <input type="text" name="to_phone" class="form-control" placeholder="(123) 454-4543">
                                 </div>
                             </div>
                         </div>
@@ -150,11 +147,11 @@
                 </tr> -->
                             <tr class="item-row">
                                 <td class="item-name">
-                                    <div class="delete-btn"><input name="item" type="text" class="form-control item" placeholder="Desc"><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div>
+                                    <div class="delete-btn"><input type="text" name="item" class="form-control item" placeholder="Desc"><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div>
                                 </td>
-                                <td><input  name="price" class="form-control price" placeholder="0.00" type="text" value="300"> </td>
+                                <td><input name="price" class="form-control price" placeholder="0.00" type="text" value="300"> </td>
                                 <td><input name="quantity" class="form-control qty" placeholder="0" type="text" value="1"></td>
-                                <td><span class="total">0.00</span></td>
+                                <td><span name="total" class="total">0.00</span></td>
                             </tr>
                             <tr id="hiderow">
                                 <td colspan="4">
@@ -178,7 +175,7 @@
                                 <td><strong>Total Qty: </strong><span id="totalQty" style="color: red; font-weight: bold">0</span> Qty</td>
                                 <td></td>
                                 <td class="text-right"><strong>Tax Percentage %</strong></td>
-                                <td><input name="tax" class="form-control" id="discount" value="0" type="text"></td>
+                                <td><input class="form-control" id="discount" name="tax" type="text"></td>
                             </tr>
                             <!-- <tr>
                     <td></td>
@@ -239,11 +236,11 @@
                     </div>
                     <div class="pt-4"> <button type="submit" id="" class="btn btn-outline-primary">Create Invoice</button>
 
-                        <a href="invoice-preview.html"><button style="float: right;" type="button" id="" class="btn btn-primary text-right">Preview</button></a>
+                        <button style="float: right;" type="button" id="" class="btn btn-primary text-right">Preview</button>
                     </div>
 
                 </div>
-        </form>
+    </form>
     </section>
 
     <footer class="containter-fluid bg-primary ">
@@ -279,9 +276,8 @@
             });
         });
     </script>
-    <script src="{% static 'js/main-nav.js' %}"></script>
-    <script src="{% static 'js/invoice-gen-app.js' %}"></script>
 
+    <script src="{% static 'js/invoice-gen-app.js' %}"></script>
 </body>
 
 </html>
