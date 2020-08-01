@@ -102,7 +102,7 @@
           <br><h2 class="get-started adj">A quick and easy way <br>to get an invoice</h2><br>
           <p>Create your invoice in few steps.   <br> Download and print in images, PDF, <br> Excel or Microsoft document.</p><br>
           <p>Join thousands of freelancers</p><br>
-          <a href="#" class="no-deco changs"><button class="text-white btn-block">Create your Free Invoice</button></a>
+          <a href="{% url 'invator:invoice' %}" class="no-deco changs"><button class="text-white btn-block">Create your Free Invoice</button></a>
       </div>
   </div><br>
 
@@ -135,7 +135,7 @@
           <img class="card-img-top shad" src="{% static 'imgs/Invoice2-1.png' %}"  class="thumbnail" style="height: 320px;" alt="Card image cap">
           <div class="card-body text-center">
             <p class="card-text">You can download or modify an order template</p>
-            <a href="#" class="btn learn-more-btn">Download</a>
+            <a href="{% url 'invator:preview_template' count %}" class="btn learn-more-btn">Download</a>
           </div>
         </div>
           </div>
@@ -146,7 +146,7 @@
              <img class="card-img-top shad" src="{% static 'imgs/Invoice3-1.png' %}" style="height: 320px;" alt="Card image cap">
              <div class="card-body text-center">
                <p class="card-text">You can download or modify an Invoice template</p>
-               <a href="#" class="btn learn-more-btn">Download</a>
+               <a href="{% url 'invator:preview_template' count %}" class="btn learn-more-btn">Download</a>
              </div>
            </div>
           </div>
@@ -157,7 +157,7 @@
              <img class="card-img-top shad" src="{% static 'imgs/Invoice2-1.png' %}" style="height: 320px;" alt="Card image cap">
              <div class="card-body text-center">
                <p class="card-text">You can download or modify a bill template</p>
-               <a href="#" class="btn learn-more-btn">Download</a>
+               <a href="{% url 'invator:preview_template' count %}" class="btn learn-more-btn">Download</a>
              </div>
            </div>
           </div>
