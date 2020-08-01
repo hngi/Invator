@@ -8,32 +8,32 @@ class EmailsForm(forms.ModelForm):
 	name = forms.CharField(label="Your Name:", max_length=254,
 					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter your name',
-						'class': 'form-control',
+						'placeholder': 'Your name',
+						'class': 'form-control contact-input',
 					})
 				)
 	message = forms.CharField(label="Your Message:", max_length=2000,
 					widget=forms.Textarea(
 					attrs={
-						'placeholder': 'Enter your message',
-						'class': 'form-control',
-						'rows': 50,
-						'cols': 70,
+						'placeholder': 'Your message',
+						'class': 'form-control contact-msg',
+						'rows': 10,
+						'cols': 50,
 					})
 				)
 	sender = forms.EmailField(
 					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter your email address',
-						'class': 'form-control',
+						'placeholder': 'Your email address',
+						'class': 'form-control contact-input',
 					})
 				)
 
 	recipient = forms.EmailField(
 					widget=forms.TextInput(
 					attrs={
-						'placeholder': 'Enter email address of recipient',
-						'class': 'form-control',
+						'placeholder': 'Email address of recipient',
+						'class': 'form-control contact-input',
 					})
 				)
 	attach = forms.FileField(
