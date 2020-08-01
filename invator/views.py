@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 #import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 from django.http import Http404, HttpResponse, JsonResponse
@@ -95,7 +95,8 @@ def dashboard(request):
         # show the latest invoices
         order_invoice = auth_invoice.order_by("-time")
         # only show 4 invoices at a time
-        context = order_invoice[:4]
+       
+        context = order_invoice[:6]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
@@ -155,14 +156,15 @@ def invoice(request):
                     to_full_name=to_full_name, from_email=from_email,
                     to_email=to_email,tax=tax )
 
-            xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
+            xo.transactions.create(price=price, item=item, quantity=quantity, total=int(price)*int(quantity))
+
             return render(request, "dashboard.html")
         return redirect('login')
-    else:
-        if request.user.is_authenticated:
-            count = Invoice.objects.filter(user=request.user).last().id + 1
-            return render(request, "invoice-gen.html", {"count":count})
-        return render(request, "invoice-gen.html")
+    # else:
+    #     if request.user.is_authenticated:
+    #         count = Invoice.objects.filter(user=request.user).last().id + 1
+    #         return render(request, "invoice-gen.html", {"count":count})
+    return render(request, "invoice-gen.html")
 
 
 
