@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-import weasyprint
+#import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 import json
@@ -136,9 +136,9 @@ def dashboard(request):
             if other_user.filter(username=username).exists():
                 error = 'username already taken.'
                 return render(request, 'dashboard.html',{'error':error})
-            elif password == "":
-                error = 'password should not be blank'
-                return render(request, 'dashboard.html',{'error':error})
+            # elif password == "":
+            #     error = 'password should not be blank'
+            #     return render(request, 'dashboard.html',{'error':error})
             elif User.objects.filter(username=username).exists():
                 user.username = username
                 user.first_name = fullname

@@ -127,10 +127,11 @@ $(".error_message").html(response);
      <!-- Navigation -->
      <nav class="navbar navbar-expand-md navbar-light ">
         <div>
+          <a href="{% url 'invator:homepage' %}">
           <h2 id = "logo" style = "font-weight: bold;">
            Invator
    
-          </h2>      
+          </h2>     </a>
      </div>
         <button
           type="button"
@@ -201,7 +202,7 @@ $(".error_message").html(response);
                         <small id="sign-up" class="form-text text-muted"><a href="../login/">Login</a></small> 
                       </div>
                       <div class="col-10">
-                        <small id="skip" class="form-text text-muted "><a href="#">Skip for now</a></small>                       
+                        <small id="skip" class="form-text text-muted "><a href="{% url 'invator:homepage' %}">Skip for now</a></small>                       
                       </div>
                       
                     </div> 
