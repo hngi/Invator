@@ -25,9 +25,9 @@ def email_invoice(request):
 				mail = EmailMessage(subject, message, sender, [recipient])
 				mail.attach(file.name, file.read(), file.content_type)
 				mail.send()
-				messages.success(request, 'Invoice sent successfully!')
+				messages.success(request, 'Invoice delivered successfully!')
 			except:
-				messages.error(request, 'Invoice not sent!')
+				messages.error(request, 'Invoice couldn\'t be delivered!')
 		
 			return render(request, "email-invoice.html", {"form": form})
 	return render(request, "email-invoice.html", {"form": form})

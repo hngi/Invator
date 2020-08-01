@@ -32,8 +32,9 @@ def contact_page(request):
                         email,
                         ["believemanasseh@gmail.com"],
                 )
+                messages.success(request, 'Message delivered successfully!')
             except BadHeaderError:
-                return HttpResponse("Invalid header found!")  
+                messages.error(request, 'Message couldn\'t be delivered!') 
             return render(request, "contact.html", {"form": form})
     return render(request, "contact.html", {"form": form})
     
