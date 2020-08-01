@@ -22,7 +22,7 @@ def contact_page(request):
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
             message = form.cleaned_data["message"]
-
+            
             try:
                 send_mail(
                         name,
@@ -152,7 +152,6 @@ def invoice(request):
             xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
 
             return render(request, "dashboard.html")
-        return render(request, "invoice-gen.html")
-    return redirect("/login")
+    return render(request, "invoice-gen.html")
 
 
