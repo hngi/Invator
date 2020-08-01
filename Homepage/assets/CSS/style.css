@@ -23,16 +23,7 @@ body {
   box-shadow: none;
 
 }
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #fff;
-    background: #1d1d1d;
-  }
 
-  body a {
-    color: #fff !important;
-  }
-}
 
 .nav-item-css {
   margin-right: 1.5rem;
@@ -90,6 +81,9 @@ body {
 .get-started{
   color: #0074d9;
 }
+.adj{
+  margin-top: 0px;
+}
 
 .learn-more-btn{
   
@@ -108,6 +102,9 @@ body {
 
 .jumbotron{
   padding-bottom: 1rem !important;
+  background-color: #4a627e; 
+  width: 100% !important;
+  color: #fff !important;
 }
 
 .shad{

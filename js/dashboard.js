@@ -13,7 +13,7 @@ function getMonthLen(theYear, theMonth) {
         thisMonth.getTime()) / oneDay)
     return len
 }
-// create array of English month names
+// create array of month names
 var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August",
     "September", "October", "November", "December"]
 // return IE4+ or W3C DOM reference for an ID
@@ -100,3 +100,8 @@ function fillYears() {
 function setCurrMonth(today) {
     document.dateChooser.chooseMonth.selectedIndex = today.getMonth()
 }
+
+// alert
+function myAlert() {
+    alert("Sent Successfully!");
+  }
