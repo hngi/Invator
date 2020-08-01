@@ -11,6 +11,53 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'invoice-style.css' %}">
 	<link rel="stylesheet" href="{% static 'invoice-nav.css' %}">
+	 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> {% endcomment %}
+
+    <script>
+    $(document).ready(function(){
+     $("#preview").click(function(event){
+      event.preventDefault();
+    var invoice_title = $("#invoice_title").val();
+    var brand_name = $("#brand_name").val();
+    var from_email = $("#from_email").val();
+    var from_address = $("#from_address").val();
+    var from_phone = $("#from_phone").val();
+    var to_full_name = $("#to_full_name").val();
+    var to_email = $("#to_email").val();
+    var to_address = $("#to_address").val();
+    var to_phone = $("#to_phone").val();
+    var tax = $("#tax").val();
+    var invoice_number = $("#invoice_number").val();
+    var account_number = $("#account_number").val();
+    var date = $("#date").val();
+    var notes = $("#notes").val();
+    var data=$('#myform').serializeArray();
+    console.log(data);
+
+$.ajax({
+
+    type: "POST",
+    url: window.location.protocol + "//" + window.location.host +"/invoice_data/",
+    data: {       csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                json_data: JSON.stringify({ data: data })
+    },
+    success: function(response) {
+$(".error_message").html(response);
+console.log(response);
+    },
+    error: function(response) {
+
+     }       
+
+            
+            });
+
+
+
+     });   
+    });
+</script>
 
 </head>
 
@@ -67,7 +114,7 @@
 							<div class="col-md-6 col-xs-12 form-group ">
 								<label for="">Title of Invoice</label>
 
-								<input type="text" class="w-50 form-control" placeholder="">
+								<input type="text" name="invoice_title" id="invoice_title" class="w-50 form-control" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -78,22 +125,22 @@
 								<div class="pt-2 form-group">
 									<label for="exampleFormControlFile1">Name</label>
 
-									<input type="text" name="from_full_name" class="form-control" placeholder="Business Name" minlength="6" required>
-								</div>
-								<div class="form-group pt-2">
-									<label for="exampleFormControlFile1">Email</label>
+									<input id="brand_name" name="brand_name" type="text" class="form-control" placeholder="Business Name" minlength="6" required>
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="exampleFormControlFile1">Email</label>
 
-									<input type="text" name="from_email" class="form-control" placeholder="name@business.com">
-								</div>
-								<div class=" form-group pt-2 ">
-									<label for="exampleFormControlFile1 ">Address</label>
+                                    <input id="from_email" name="from_email" type="text" class="form-control" placeholder="name@business.com" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                </div>
+                                <div class=" form-group pt-2 ">
+                                    <label for="exampleFormControlFile1 ">Address</label>
 
-									<input type="text" name="from_address" class="form-control " placeholder="Street ">
-								</div>
-								<div class="form-group pt-2 ">
-									<label for="exampleFormControlFile1 ">Phone</label>
+                                    <input id="from_address" name="from_address" type="text " class="form-control " placeholder="Street ">
+                                </div>
+                                <div class="form-group pt-2 ">
+                                    <label for="exampleFormControlFile1 ">Phone</label>
 
-									<input type="text" name="from_phone" class="form-control " placeholder="(123) 454-4543 ">
+                                    <input id="from_phone" name="from_phone" type="text " class="form-control " placeholder="(123) 454-4543 ">
 								</div>
 							</div>
 						</div>
@@ -103,22 +150,22 @@
 								<div class="form-group pt-2 ">
 									<label for="exampleFormControlFile1 ">Name</label>
 
-									<input type="text " name="to_name" class="form-control " placeholder="Client Name " minlength="6" required>
-								</div>
-								<div class="form-group pt-2 ">
-									<label for="exampleFormControlFile1 ">Email</label>
+									<input id="to_full_name" name="to_full_name" type="text " class="form-control " placeholder="Client Name " minlength="6" required>
+                                </div>
+                                <div class="form-group pt-2 ">
+                                    <label for="exampleFormControlFile1 ">Email</label>
 
-									<input type="text " name="to_email" class="form-control " placeholder="name@business.com ">
-								</div>
-								<div class="form-group pt-2">
-									<label for="exampleFormControlFile1">Address</label>
+                                    <input id="to_email" name="to_email" type="text " class="form-control " placeholder="name@business.com " required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="exampleFormControlFile1">Address</label>
 
-									<input type="text" name="to_address" class="form-control" placeholder="Street">
-								</div>
-								<div class="form-group pt-2">
-									<label for="exampleFormControlFile1">Phone</label>
+                                    <input id="to_address" name="to_address" type="text" class="form-control" placeholder="Street">
+                                </div>
+                                <div class="form-group pt-2">
+                                    <label for="exampleFormControlFile1">Phone</label>
 
-									<input type="text" name="to_phone" class="form-control" placeholder="(123) 454-4543">
+                                    <input id="to_phone" name="to_phone" type="text" class="form-control" placeholder="(123) 454-4543">
 								</div>
 							</div>
 						</div>
@@ -144,18 +191,18 @@
 					<td><span class="total">0.00</span></td>
 				</tr> -->
 							<tr class="item-row">
-								<td class="item-name">
-									<div class="delete-btn"><input type="text" name="item" class="form-control item" placeholder="Desc"><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div>
-								</td>
-								<td><input name="price" class="form-control price" placeholder="0.00" type="text" value="300"> </td>
-								<td><input name="quantity" class="form-control qty" placeholder="0" type="text" value="1"></td>
-								<td><span name="total" class="total">0.00</span></td>
-							</tr>
-							<tr id="hiderow">
-								<td colspan="4">
-									<a id="addRow" href="javascript:;" title="Add a row" class="btn btn-primary">&#x0002B;</a>
-								</td>
-							</tr>
+                                <td class="item-name">
+                                    <div class="delete-btn"><input name="item" type="text" class="form-control item" placeholder="Desc"><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div>
+                                </td>
+                                <td><input  name="price" class="form-control price" placeholder="0.00" type="text" value="300"> </td>
+                                <td><input name="quantity" class="form-control qty" placeholder="0" type="text" value="1"></td>
+                                <td><span class="total">0.00</span></td>
+                            </tr>
+                            <tr id="hiderow">
+                                <td colspan="4">
+                                    <a id="addRow" href="javascript:;" title="Add a row" class="btn btn-primary">&#x0002B;</a>
+                                </td>
+                            </tr>
 							<!-- Here should be the item row -->
 							<!--<tr class="item-row">
 				<td><input class="form-control item" placeholder="Item" type="text"></td>
@@ -173,7 +220,7 @@
 								<td><strong>Total Qty: </strong><span id="totalQty" style="color: red; font-weight: bold">0</span> Qty</td>
 								<td></td>
 								<td class="text-right"><strong>Tax Percentage %</strong></td>
-								<td><input class="form-control" id="discount" name="tax" type="text"></td>
+								<td><input id="tax" name="tax" class="form-control" id="discount" value="0" type="number"></td>
 							</tr>
 							<!-- <tr>
 					<td></td>
@@ -201,21 +248,21 @@
 								<div class="form-group">
 									<label for="exampleFormControlFile1">Invoice No</label>
 
-									<input class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="" />
+									<input class="form-control" style="width: 100%;" name="invoice_number" id="invoice_number" rows="10" placeholder="" />
 
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlFile1">Account No</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Account No</label>
 
-									<input name="account_number" class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="" />
+                                    <input name="account_number" class="form-control" style="width: 100%;" name="account_number" id="account_number" rows="10" placeholder="" />
 
-								</div>
-								<div class="form-group">
-									<label for="exampleFormControlFile1">Date </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Date </label>
 
-									<!-- <input  id="invoiceDate" class="mt-2 invoiceCreation__date " /> -->
+                                    <!-- <input  id="invoiceDate" class="mt-2 invoiceCreation__date " /> -->
 
-									<input type="date" class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="Note" aria-describedby="insert invoice Date" />
+                                    <input type="date" class="form-control" style="width: 100%;" name="date" id="date" rows="10" placeholder="Note" aria-describedby="insert invoice Date" />
 
 								</div>
 							</div>
@@ -234,7 +281,7 @@
 					</div>
 					<div class="pt-4"> <button type="submit" id="" class="btn btn-outline-primary">Create Invoice</button>
 
-						<button style="float: right;" type="button" id="" class="btn btn-primary text-right">Preview</button>
+						 <a id="preview"><button style="float: right;" type="button"  class="btn btn-primary text-right">Preview</button></a>
 					</div>
 
 				</div>
@@ -515,7 +562,7 @@
 
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    {% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"> {% endcomment %}
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js "></script>
 
