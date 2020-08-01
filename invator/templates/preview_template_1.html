@@ -70,7 +70,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-lg-4 card1">
                         <p>Your invoice is ready click below to preview your Invoice</p>
-                        <a href="#"><button class="btn">Preview</button></a>
+                        <!-- <a href="#"><button class="btn">Preview</button></a> -->
                         <p>You can also download or export the invoice to your mail</p>
                         <a href="{% url 'download_to_pdf' obj.id %}"><button class="btn">Download</button></a>  <br> <br>
                         <a href="{% url 'email-invoice' %}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="email">Get through mail</button></a> 
@@ -99,7 +99,6 @@
                     <div class="col-sm-12 col-md-8  col-lg-8">
                         <div class="invoice-wrapper">
                             <div class="invoice-inner">
-                                <h2 class="logo">{{obj.brand_name}}</h2>
                                 <div class="row invoice-top">
                                     <div class="col-sm-6 col-md-4 col-lg-4">
                                         <h3>BILL FROM</h3>
