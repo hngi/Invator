@@ -70,10 +70,10 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-lg-4 card1">
                         <p>Your invoice is ready click below to preview your Invoice</p>
-                        <a href="#"><button class="btn">Preview</button></a>
+                        <!-- <a href="#"><button class="btn">Preview</button></a> -->
                         <p>You can also download or export the invoice to your mail</p>
-                        <a href="{%url i'invator:download_to_pdf' obj.id %}"><button class="btn">Download</button></a>  <br> <br>
-                        <a href="{% url 'invator:mail-invoice' %}"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="email">Get through mail</button></a> 
+                        <a href="{%url 'invator:download_to_pdf' obj.id %}"><button class="btn">Download</button></a>  <br> <br>
+                        <!-- <a href="mail-invoice"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="email">Get through mail</button></a>  -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -99,7 +99,6 @@
                     <div class="col-sm-12 col-md-8  col-lg-8">
                         <div class="invoice-wrapper">
                             <div class="invoice-inner">
-                                <h2 class="logo">{{obj.brand_name}}</h2>
                                 <div class="row invoice-top">
                                     <div class="col-sm-6 col-md-4 col-lg-4">
                                         <h3>BILL FROM</h3>
