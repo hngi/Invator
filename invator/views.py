@@ -109,7 +109,7 @@ def dashboard(request):
         context = {"list":li}
         '''
         # only show 4 invoices at a time
-        context = order_invoice[:4]
+        context = order_invoice[:6]
         if request.method == "POST":
             fullname = request.POST['fullname']
             username = request.POST['username']
