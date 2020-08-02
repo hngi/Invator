@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-import weasyprint
+#import weasyprint
 from django.template.loader import render_to_string
-from weasyprint import HTML
+#from weasyprint import HTML
 from django.contrib.auth.decorators import login_required
 import tempfile
 import json
@@ -228,7 +228,7 @@ def invoice(request):
                 to_address=to_address, account_number=account_number,
                 from_full_name=from_full_name, from_phone=from_phone,
                 to_full_name=to_full_name, from_email=from_email,
-                to_email=to_email,tax=tax, title=title)
+                to_email=to_email,tax=tax, title=title )
 
             # xo.transactions.create(price=price, item=item, quantity=quantity, total=1)
             
