@@ -27,7 +27,7 @@ class Transaction(models.Model):
     price = models.CharField(max_length=30, null=True, blank=True)
     quantity = models.CharField(max_length=30, null=True, blank=True)
     total = models.CharField(max_length=30, null=True, blank=True)
-    status = models.CharField(max_length=9, choices=STATUS, default='')
+    #status = models.CharField(max_length=9, choices=STATUS, default='')
 
 
 class Invoice(models.Model):
