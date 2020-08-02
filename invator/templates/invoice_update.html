@@ -113,7 +113,7 @@ console.log(response);
                             <div class="col-md-6 col-xs-12 form-group ">
                                 <label for="">Title of Invoice</label>
  
-                                <input name="title" type="text" class="w-50 form-control" placeholder="">
+                                {{result.title}}
                             </div>
                         </div>
                     </div>
@@ -124,22 +124,22 @@ console.log(response);
                                 <div class="pt-2 form-group">
                                     <label for="exampleFormControlFile1">Name</label>
  
-                                    <input name="from_full_name" type="text" class="form-control" placeholder="Business Name" minlength="6" required>
+                                    {{result.from_full_name}}
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Email</label>
  
-                                    <input name="from_email" type="text" class="form-control" placeholder="name@business.com" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                    {{result.from_email}}
                                 </div>
                                 <div class=" form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Address</label>
  
-                                    <input name="from_address" type="text " class="form-control " placeholder="Street ">
+                                    {{result.from_address}}
                                 </div>
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Phone</label>
  
-                                    <input name="from_phone" type="text " class="form-control " placeholder="(123) 454-4543 ">
+                                    {{result.from_phone}}
                                 </div>
                             </div>
                         </div>
@@ -149,22 +149,22 @@ console.log(response);
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Name</label>
  
-                                    <input name="to_name" type="text " class="form-control " placeholder="Client Name " minlength="6" required>
+                                    {{result.to_name}}
                                 </div>
                                 <div class="form-group pt-2 ">
                                     <label for="exampleFormControlFile1 ">Email</label>
  
-                                    <input name="to_email" type="text " class="form-control " placeholder="name@business.com " required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                   {{result.to_email}}
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Address</label>
  
-                                    <input name="to_address" type="text" class="form-control" placeholder="Street">
+                                    {{result.to_address}}
                                 </div>
                                 <div class="form-group pt-2">
                                     <label for="exampleFormControlFile1">Phone</label>
  
-                                    <input name="to_phone" type="text" class="form-control" placeholder="(123) 454-4543">
+                                    {{result.to_phone}}
                                 </div>
                             </div>
                         </div>
@@ -191,17 +191,13 @@ console.log(response);
                             </tr> -->
                             <tr class="item-row">
                                 <td class="item-name">
-                                    <div class="delete-btn"><input name="item" type="text" class="form-control item" placeholder="Desc"><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div>
+                                    {{result.item}}
                                 </td>
-                                <td><input name="price" class="form-control price" placeholder="0.00" type="number" value="300"> </td>
-                                <td><input name="quantity" class="form-control qty" placeholder="0" type="number" value="1"></td>
-                                <td><span class="total">0.00</span></td>
+                                <td>{{result.price}}</td>
+                                <td>{{result.quantity}}</td>
+                                <td><span>{{result.total}}</span></td>
                             </tr>
-                            <tr id="hiderow">
-                                <td colspan="4">
-                                    <a id="addRow" href="javascript:;" title="Add a row" class="btn btn-primary">+</a>
-                                </td>
-                            </tr>
+                    
                             <!-- Here should be the item row -->
                             <!--<tr class="item-row">
                 <td><input class="form-control item" placeholder="Item" type="text"></td>
@@ -210,16 +206,10 @@ console.log(response);
                 <td><span class="total">0.00</span></td>
             </tr>-->
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="text-right"><strong>Sub Total</strong></td>
-                                <td><span id="subtotal">0.00</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Total Qty: </strong><span id="totalQty" style="color: red; font-weight: bold">0</span> Qty</td>
+                                <td><strong>Total Qty: </strong><span id="totalQty" style="color: red; font-weight: bold">0</span> {{result.quantity}}</td>
                                 <td></td>
                                 <td class="text-right"><strong>Tax Percentage %</strong></td>
-                                <td><input name="tax" class="form-control" id="discount" value="0" type="number"></td>
+                                <td>{{result.tax}}</td>
                             </tr>
                             <!-- <tr>
                     <td></td>
@@ -231,7 +221,7 @@ console.log(response);
                                 <td></td>
                                 <td></td>
                                 <td class="text-right"><strong>Grand Total</strong></td>
-                                <td><span id="grandTotal">0</span></td>
+                                <td><span>{{result.grand_total}}</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -244,33 +234,23 @@ console.log(response);
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mr-md-5">
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Invoice No</label>
- 
-                                    <input class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="" />
- 
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Account No</label>
- 
-                                    <input name="account_number" class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="" />
- 
-                                </div>
+                            
                                 <div class="form-group">
                                     <label for="status">Status</label>
 									<select id="" name="status">
-									  <option value=""></option>
-									  <option value="Unpaid">Unpaid</option>
-									  <option value="Paid">Paid</option>
-									  <option value="Draft">Draft</option>
-									  
-									</select>
+                                      <option value=""></option>
+                                      <option value="Unpaid">Unpaid</option>
+                                      <option value="Paid">Paid</option>
+                                      <option value="Draft">Draft</option>
+                                      
+                                    </select>
+ 
  
                                 </div>
                                 <!--div class="form-group">
                                     <label for="exampleFormControlFile1">Date </label>
  
-                                    <!-- <input  id="invoiceDate" class="mt-2 invoiceCreation__date " />
+                                    <input  id="invoiceDate" class="mt-2 invoiceCreation__date " />
  
                                     <input type="date" class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="Note" aria-describedby="insert invoice Date" />
  
@@ -279,20 +259,12 @@ console.log(response);
  
  
                         </div>
-                        <div class="col-md-6">
-                            <div class="pl-md-5">
-                                <div class="form-group">
-                                    <label for="exampleFormControlFile1">Notes</label>
-                                    <textarea class="form-control" style="width: 100%;" name="" id="" rows="10" placeholder="Notes - any relevant information not covered, additional terms and conditions"></textarea>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="pt-4"> <button type="submit" id="" class="btn btn-outline-primary">Create Invoice</button>
+                    <div class="pt-4"> <button type="submit" id="" class="btn btn-outline-primary">Update Invoice</button>
                     <a id="preview"><button style="float: right;" type="button"  class="btn btn-primary text-right">Preview</button></a>
  
                         <!--a href="invoice-preview.html"><button style="float: right;" type="button" id="" class="btn btn-primary text-right">Preview</button></a-->
-                    </div>
+                    </div>>
  
                 </div>
     </section>
