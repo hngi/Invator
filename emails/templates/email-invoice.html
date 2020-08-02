@@ -51,6 +51,14 @@
             <div class="contact-box">
                 <h3>Send Invoice To Client</h3>
                 <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                	{% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
                 	{{form.errors}}
                 	<div class="row">
                         <div class="col-md-6">
