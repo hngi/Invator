@@ -21,13 +21,13 @@ class EmailsForm(forms.ModelForm):
 						'cols': 50,
 					})
 				)
-	sender = forms.EmailField(
-					widget=forms.TextInput(
-					attrs={
-						'placeholder': 'Your email address',
-						'class': 'form-control contact-input',
-					})
-				)
+	#sender = forms.EmailField(
+	#				widget=forms.TextInput(
+	#				attrs={
+	#					'placeholder': 'Your email address',
+	#					'class': 'form-control contact-input',
+	#				})
+	#			)
 
 	recipient = forms.EmailField(
 					widget=forms.TextInput(
@@ -47,7 +47,7 @@ class EmailsForm(forms.ModelForm):
 		fields = [
 			'name',
 			'message',
-			'sender',
+			#'sender',
 			'recipient',
 			'attach'
 		]

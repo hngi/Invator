@@ -15,6 +15,7 @@ from django.contrib import messages
 from .forms import ContactForm
 from django.contrib.auth import get_user_model
 from django.views.generic import ListView
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 User = get_user_model()
 
 def contact_page(request):
@@ -32,12 +33,12 @@ def contact_page(request):
                         message,
                         email,
                         ["believemanasseh@gmail.com"],
+                        fail_silently=False,
                 )
-                messages.success(request, 'Message delivered successfully!')
+                messages.success(request, 'Message delivered successfully!')        
             except BadHeaderError:
                 messages.error(request, 'Message couldn\'t be delivered!')
-                return HttpResponse("Invalid header found!")
-            return render(request, "contact.html", {"form": form})
+            return render(request, "contact.html", {"form": form})          
     return render(request, "contact.html", {"form": form})
 
 def homepage(request):
@@ -95,7 +96,36 @@ class InvoiceSearch(ListView):
                 reduce(operator.and_, (Q(role__icontains=q) for q in query_list))
             )
         return result
-    
+
+'''
+def invoice_detail_view(request, pk):
+    context = {}
+    context["result"] = Invoice.objects.get(pk=pk)
+    return render(request, "invoice_detail.html", context)
+
+def invoice_update_view(request, pk):
+    context = {}
+    # fetch object for id 
+    invoice_obj = get_object_or_404(Invoice, pk=pk)
+    if request.method == "POST":
+        status = request.POST.get('status')
+        # update invoice
+        invoice = Invoice.objects.filter(pk=pk)
+        for stats in invoice:
+            stats.transactions.update(status=status)
+
+
+        messages.success(request, "Invoice was successfully updated")
+
+        context = {"invoice_obj": invoice_obj}
+        return render(request, "invoice_update.html", context)
+
+    else:
+        messages.error(request, "Please update invoice")
+        context = {"invoice_obj": invoice_obj}
+        return render(request, "invoice_update.html", context)
+'''
+   
 
 def dashboard(request):
     '''views for the dashboard template'''
@@ -181,6 +211,7 @@ def invoice(request):
             to_email = request.POST["to_email"]
             print(item)
             from_email = request.POST["from_email"]
+            #status = request.POST["status"]
            #total = 0
             #for x, y in zip(price, quantity):
              #   total = int(x) * int(y) + int(total)
