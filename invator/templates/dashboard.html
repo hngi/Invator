@@ -103,7 +103,12 @@
                             <div class="content">
                                 <div class="row first-row d-flex justify-content-between">
                                     <h3>Dashboard</h3>
-                                    <input type="text" class="form-control search" placeholder="search">
+                                    <form action="{% url 'invator:searchbar' %}" method="get">
+                                        <button>
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                        <input type="text" class="form-control search" placeholder="search" name="q">
+                                    </form>
                                 </div>
                            <!--     <div class="row second-row">
                                     <div class="col-md-3">
