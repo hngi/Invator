@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"  dark-theme="Light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice View</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="css/invoice-view2.css">
+</head>
+<body>
+    <input type="checkbox" id="switch" class="color-changer" name="theme">
+    <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
+        <div class="card shadow">
+            <div class="card-header p-4">
+                <span>Invoice
+                    <strong>#BAX-222432</strong>
+                </span>
+                <div class="float-right">
+                    <div class="pull-right"> <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-print mr-1"></i> Print</a> <a class="btn btn-sm btn-info" href="#" data-abc="true"><i class="fa fa-file-text-o mr-1"></i>Download as PDF</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <h6 class="mb-3">To:</h6>
+                        <h5 class="text-dark mb-1">JOHN SMITH</h5>
+                        <div>404, Skeleton Street</div>
+                        <div>New Delhi 543210, India</div>
+                        <div>Email: daddyyoy@gmail.com</div>
+                        <div> <b>Phone:</b> +91 2897 989 999</div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <h1 class="text-dark mb-3">Invoice</h1>
+                        <address contenteditable="">
+                            <div> <b>Invoice No <span class="pl-3">:</span> </b> BAX-222432</div>
+                            <div> <b>Account No <span class="pl-2">:</span> </b> 4455627884591</div>
+                            <div> <b>Date <span class="pl-5 ml-3">:</span> </b> 31st July 2020</div>
+                        </address>
+                    </div>
+                </div>
+            </div>
+                <div class="table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Item Description</th>
+                                <th class="right">Price</th>
+                                <th class="center">Qty</th>
+                                <th class="right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="center">1</td>
+                                <td class="left strong">
+                                    <h6>Web Design</h6>
+                                    <div>Usian Bolt of Web Design & its iteractive tutorials</div>
+                                </td>
+                                <td class="right">$1500</td>
+                                <td class="center">10</td>
+                                <td class="right">$15,000</td>
+                            </tr>
+                            <tr>
+                                <td class="center">2</td>
+                                <td class="left strong">
+                                    <h6>Branding Design</h6>
+                                    <div>10 Secrets to unlock the Tesla Branding strategy</div>
+                                </td>
+                                <td class="right">$1200</td>
+                                <td class="center">10</td>
+                                <td class="right">$12,000</td>
+                            </tr>
+                            <tr>
+                                <td class="center">3</td>
+                                <td class="left strong">
+                                    <h6>Brochure Design</h6>
+                                    <div>Have it all in one piece. #GodNoGoShameYou</div>
+                                </td>
+                                <td class="right">$800</td>
+                                <td class="center">10</td>
+                                <td class="right">$8000</td>
+                            </tr>
+                            <tr>
+                                <td class="center">4</td>
+                                <td class="left strong">
+                                    <h6>Web Development</h6>
+                                    <div>Enhance & Build Website dynamically. #LambdaDonCalmDown</div>
+                                </td>
+                                <td class="right">$500</td>
+                                <td class="center">10</td>
+                                <td class="right">$5000</td>
+                            </tr>
+                            <tr>
+                                <td class="center">5</td>
+                                <td class="left strong">
+                                    <h6>E-Book Design</h6>
+                                    <div>Inspire ya creativity with 50 Eye-catching E-book Design..</div>
+                                </td>
+                                <td class="right">$500</td>
+                                <td class="center">10</td>
+                                <td class="right">$5000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-5 d-lg">
+                        <div class="pl-4 pt-5">
+                            <h5>Payment Info</h5>
+                            <div style="width: max-content;">
+                                <h6 style="display: inline;">Paypal:</h6> <span>paypal@company.com Card</span>
+                            </div>
+                            <div style="width: max-content;">
+                                <h6 style="display: inline;">Payment:</h6> <span>Visa, Master Card</span>
+                            </div>
+                            <div>We accept Cheque</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-5 ml-auto">
+                        <table class="table table-clear">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong class="text-dark">Sub Total</strong>
+                                    </td>
+                                    <td class="right">$28,809,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="left">
+                                        <strong class="text-dark">VAT (10%)</strong>
+                                    </td>
+                                    <td class="right">$2,304,00</td>
+                                </tr>
+                                <tr class="g-total" dark="true">
+                                    <td class="left">
+                                        <strong class="text-light">Grand Total</strong> </td>
+                                    <td class="right">
+                                        <strong class="text-light">$31,113,00</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-5 d-sm">
+                    <div class="pl-4 pt-5">
+                        <h5>Payment Info</h5>
+                        <div style="width: max-content;">
+                            <h6 style="display: inline;">Paypal:</h6> <span>paypal@company.com Card</span>
+                        </div>
+                        <div style="width: max-content;">
+                            <h6 style="display: inline;">Payment:</h6> <span>Visa, Master Card</span>
+                        </div>
+                        <div>We accept Cheque</div>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 pl-4 pb-5">
+                    <h5>Thank you for your business!</h5>
+                    <div style="width: 80%;">
+                        <h6 style="display: inline;">Terms:</h6> Delay in payment within the next 48hrs incur an additional bill of 0.05% of your total products in every 12hrs. 
+                    </div>
+                </div>
+            <div class="card-footer bg-white">
+                <p class="mb-0 text-center text-muted">©Franel Invator, 2020</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.6/lib/darkmode-js.min.js"></script> -->
+<script src="js/invoice-view2.js"></script>
+  <!-- <script>
+    
+    $(function() {
+      $('.toggleNav').on('click',function() {
+        $('#sidebar-wrapper').slideToggle();
+      });
+    });
+
+$(function() {
+      $('.toggleDesktop').on('click',function() {
+        $('#sidebar-wrapper').slideToggle();
+      });
+    });
+
+  </script> -->
+</body>
+
+</html>
